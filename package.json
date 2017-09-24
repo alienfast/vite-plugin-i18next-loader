@@ -1,15 +1,10 @@
 {
-  "name": "i18next-resource-store-loader",
-  "version": "0.1.2",
-  "author": {
-    "name": "atroo (info@atroo.de) www.atroo.net"
-  },
-  "description": "a resStore loader for webpack and i18next",
+  "name": "@alienfast/i18next-loader",
+  "version": "1.0.0",
+  "description": "Webpack loader for client embedded i18next locales from json or yaml.",
   "main": "index.js",
   "scripts": {
-    "xbuild": "NODE_ENV=production buildBabel ./src --ignore *.spec.js --out-dir ./build",
-    "xprebuild": "rimraf build",
-    "xrelease": "yarn run build && cd build && npm publish",
+    "release": "yarn run build && cd build && npm publish",
     "test": "yarn test:unit",
     "test:unit": "mocha",
     "test:watch": "mocha -w"
@@ -22,24 +17,21 @@
   ],
   "keywords": [
     "webpack",
+    "loader",
     "i18next",
-    "static",
-    "resource",
-    "loader"
+    "locales",
+    "yaml",
+    "json"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/atroo/i18next-resource-store-loader"
+    "url": "https://github.com/alienfast/i18next-loader"
   },
-  "homepage": "https://github.com/atroo/i18next-resource-store-loader",
+  "homepage": "https://github.com/alienfast/i18next-loader",
   "maintainers": [
     {
-      "name": "Robert Krüger",
-      "email": "robert@atroo.de"
-    },
-    {
-      "name": "Martin Foerster",
-      "email": "martin@atroo.de"
+      "name": "Kevin Ross",
+      "email": "kevin.ross@alienfast.com"
     }
   ],
   "dependencies": {
