@@ -1,6 +1,6 @@
-# i18next-resource-store-loader
+# @alienfast/i18next-loader
 
-`yarn add i18next-resource-store-loader`
+`yarn add @alienfast/i18next-loader`
 
 This webpack loader generates the `resources` structure necessary for **i18next**.  The structure is webpacked wthith the
  client bundle, thus avoiding loading any language resources via extra HTTP requests. 
@@ -92,3 +92,9 @@ This configures the loader to work on a file structure like the following:
 ```
 
 Everthing from `app/locales` will override anything specified in one to many libraries.
+
+## Credit
+
+This was forked from [i18next-resource-store-loader](https://github.com/atroo/i18next-resource-store-loader) because
+we changed it in [breaking ways that are incompatible](https://github.com/atroo/i18next-resource-store-loader/issues/14#issuecomment-331726268).  
+Thanks to the original authors and contributors.  
