@@ -32,7 +32,39 @@ See the `test/data` directory for structure and example data.
            └── bar.yaml
 ```
 
-### Sample i18next config/use
+### Option 1: use with webpack.config.js (recommended)
+
+```javascript
+module.exports = {
+  // ... snip
+  module: {
+    rules: [
+      {
+        test: /locales/,
+        loader: '@alienfast/i18next-loader',
+        // options here
+        //query: { overrides: [ '../node_modules/lib/locales' ] }
+      }
+    ]
+  }
+  // ... snip
+}
+```
+
+```javascript
+// File: app.js
+import i18n from 'i18next'
+import resources from '../locales'
+
+i18n.init({
+  resources
+});
+
+// Use the resources as documented on i18next.com
+i18n.t('key')
+```
+
+### Option 2: use with import syntax
 
 ```javascript
 // File: app.js
@@ -51,6 +83,8 @@ And you're done! The `index.js` can be empty, it's just needed to point the load
 
 ## Advanced Usage
 
+Options are set via the loader `query`. See webpack documentation for more details regarding how this mechanism works.
+The following examples assume you understand these values are used as the `query` value.  
 
 ### Filtering files
 You can filter files in your file structure by specifying any glob supported by [`glob-all`](https://github.com/jpillora/node-glob-all).
@@ -58,21 +92,21 @@ You can filter files in your file structure by specifying any glob supported by 
 By default, any `json|yaml|yml` will be loaded.
 
 #### Only json
-```javascript
-import resources from "@alienfast/i18next-loader?{include: ['**/*.json']}!../locales/index.js"
+```json
+{include: ['**/*.json']}
 ```
 
 #### Json but exclude one file
-```javascript
-import resources from "@alienfast/i18next-loader?{include: ['**/*.json', '!**/excludeThis.json']}!../locales/index.js"
+```json
+{include: ['**/*.json', '!**/excludeThis.json']}
 ```
 
 ### Inheritance/Override
 Applications that reuse libraries, or need white label/branding capability can utilize one to many sets of locales that 
 the app will override.  Read the query string as `app` overrides `[../node_modules/lib1, ../node_modules/lib2]`.  
 
-```javascript
-import resources from "@alienfast/i18next-loader?{overrides: ['../node_modules/lib1/locales']}!../locales/index.js"
+```json
+{overrides: ['../node_modules/lib1/locales']}
 ```
 This configures the loader to work on a file structure like the following:
 
