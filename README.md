@@ -5,8 +5,14 @@
 
 `yarn add -D @alienfast/i18next-loader`
 
-This webpack loader generates the `resources` structure necessary for **i18next**.  The structure is webpacked wthith the
- client bundle, thus avoiding loading any language resources via extra HTTP requests. 
+This webpack loader generates the `resources` structure necessary for [i18next](https://github.com/i18next/i18next).  
+The structure is webpacked with the client bundle at build time, thus avoiding loading any language resources via extra HTTP requests.
+
+## Features
+
+- glob based file filtering
+- one to many overrides supporting reuse cases (white labeling)
+- yaml and json support 
  
 Given a locales directory, by default, the loader will find and parse any `json|yaml|yml` file and attribute the 
 contents to the containing lang folder e.g. `en`.  There is no need to add lang such as `en` or `de` inside your 
@@ -92,12 +98,12 @@ You can filter files in your file structure by specifying any glob supported by 
 By default, any `json|yaml|yml` will be loaded.
 
 #### Only json
-```json
+```javascript
 {include: ['**/*.json']}
 ```
 
 #### Json but exclude one file
-```json
+```javascript
 {include: ['**/*.json', '!**/excludeThis.json']}
 ```
 
@@ -105,7 +111,7 @@ By default, any `json|yaml|yml` will be loaded.
 Applications that reuse libraries, or need white label/branding capability can utilize one to many sets of locales that 
 the app will override.  Read the query string as `app` overrides `[../node_modules/lib1, ../node_modules/lib2]`.  
 
-```json
+```javascript
 {overrides: ['../node_modules/lib1/locales']}
 ```
 This configures the loader to work on a file structure like the following:
