@@ -19,14 +19,14 @@ See the `test/data` directory for structure and example data.
 └── app
     └── src
     │  └── app.js
-    ├── locales
-    │  ├── index.js
-    │  ├── de
-    │  │   ├── foo.json
-    │  │   └── bar.yaml
-    │  └── en
-    │      ├── foo.json
-    │      └── bar.yaml
+    └── locales
+       ├── index.js
+       ├── de
+       │   ├── foo.json
+       │   └── bar.yaml
+       └── en
+           ├── foo.json
+           └── bar.yaml
 ```
 
 ### Sample i18next config/use
