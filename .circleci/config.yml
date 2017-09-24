@@ -12,7 +12,7 @@ jobs:
       - add_ssh_keys
       - restore_cache:
           key: yarn-all-branches
-      - run: yarn install @alienfast/build
+      - run: yarn global add @alienfast/build
       - run: yarn run buildGitFlowAutoReleaseStart
       - run: ncu -a
       - run: yarn install
