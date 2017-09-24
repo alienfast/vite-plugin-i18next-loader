@@ -1,10 +1,10 @@
 {
   "name": "@alienfast/i18next-loader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Webpack loader for client embedded i18next locales from json or yaml.",
   "main": "index.js",
   "scripts": {
-    "release": "yarn run build && cd build && npm publish",
+    "release": "npm publish",
     "test": "yarn test:unit",
     "test:unit": "mocha",
     "test:watch": "mocha -w"
