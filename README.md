@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/alienfast/i18next-loader/tree/develop.svg?style=svg&circle-token=9de60bf76b13f269bb560cd89ea253c9c04238ce)](https://circleci.com/gh/alienfast/i18next-loader/tree/develop)
 [![npm version](https://badge.fury.io/js/%40alienfast%2Fi18next-loader.svg)](https://badge.fury.io/js/%40alienfast%2Fi18next-loader)
 
-`yarn add @alienfast/i18next-loader`
+`yarn add -D @alienfast/i18next-loader`
 
 This webpack loader generates the `resources` structure necessary for **i18next**.  The structure is webpacked wthith the
  client bundle, thus avoiding loading any language resources via extra HTTP requests. 
