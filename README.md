@@ -37,7 +37,7 @@ See the `test/data` directory for structure and example data.
 ```javascript
 // File: app.js
 import i18n from 'i18next'
-import resources from 'i18next-resource-store-loader!../locales/index.js'
+import resources from '@alienfast/i18next-loader!../locales/index.js'
 
 i18n.init({
   resources
@@ -59,12 +59,12 @@ By default, any `json|yaml|yml` will be loaded.
 
 #### Only json
 ```javascript
-import resources from "i18next-resource-store-loader?{include: ['**/*.json']}!../locales/index.js"
+import resources from "@alienfast/i18next-loader?{include: ['**/*.json']}!../locales/index.js"
 ```
 
 #### Json but exclude one file
 ```javascript
-import resources from "i18next-resource-store-loader?{include: ['**/*.json', '!**/excludeThis.json']}!../locales/index.js"
+import resources from "@alienfast/i18next-loader?{include: ['**/*.json', '!**/excludeThis.json']}!../locales/index.js"
 ```
 
 ### Inheritance/Override
@@ -72,7 +72,7 @@ Applications that reuse libraries, or need white label/branding capability can u
 the app will override.  Read the query string as `app` overrides `[../node_modules/lib1, ../node_modules/lib2]`.  
 
 ```javascript
-import resources from "i18next-resource-store-loader?{overrides: ['../node_modules/lib1/locales']}!../locales/index.js"
+import resources from "@alienfast/i18next-loader?{overrides: ['../node_modules/lib1/locales']}!../locales/index.js"
 ```
 This configures the loader to work on a file structure like the following:
 
