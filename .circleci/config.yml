@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: alienfast/ci-ruby:2.0.5
+    working_directory: ~/i18next-loader
+    branches:
+      ignore:
+        - master
+    steps:
+      - checkout
+      - add_ssh_keys
+      - restore_cache:
+          key: yarn-all-branches
+      - run: ncu -a
+      - run: yarn install
+      - run: yarn run buildGitFlowAutoReleaseStart
+      - run: yarn test:unit
+      - save_cache:
+          key: yarn-all-branches-{{ epoch }}
+          paths:
+            - "~/.cache/yarn/v1"
+            - .eslintcache
+
+      - deploy:
+          name: Finish release and publish to npm
+          command: |
+             if [ "${CIRCLE_BRANCH}" == "develop" ];
+               then \
+                  yarn run buildGitFlowAutoReleaseFinish && npm run release
+             fi
