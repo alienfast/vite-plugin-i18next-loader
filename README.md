@@ -5,8 +5,7 @@
 
 `yarn add -D @alienfast/i18next-loader`
 
-This webpack loader generates the `resources` structure necessary for [i18next](https://github.com/i18next/i18next).  
-The structure is webpacked with the client bundle at build time, thus avoiding loading any language resources via extra HTTP requests.
+This webpack loader generates the `resources` structure necessary for [i18next](https://github.com/i18next/i18next).  The structure is webpacked with the client bundle at build time, thus avoiding loading any language resources via extra HTTP requests.
 
 ## Features
 
@@ -18,7 +17,7 @@ Given a locales directory, by default, the loader will find and parse any `json|
 contents to the containing lang folder e.g. `en`.  There is no need to add lang such as `en` or `de` inside your 
 `json` or `yaml` files.
  
-See the `test/data` directory for structure and example data.
+See the [`test/data` directory](https://github.com/alienfast/i18next-loader/tree/develop/test/data) for structure and example data.
 
 ## Usage
 
@@ -102,14 +101,14 @@ By default, any `json|yaml|yml` will be loaded.
 {include: ['**/*.json']}
 ```
 
-#### Json but exclude one file
+#### All json except one file
 ```javascript
 {include: ['**/*.json', '!**/excludeThis.json']}
 ```
 
-### Inheritance/Override
-Applications that reuse libraries, or need white label/branding capability can utilize one to many sets of locales that 
-the app will override.  Read the query string as `app` overrides `[../node_modules/lib1, ../node_modules/lib2]`.  
+### Overriding/White labeling
+Applications that reuse libraries e.g. white labeling, can utilize one to many sets of locale directories that 
+the app will override.  
 
 ```javascript
 {overrides: ['../node_modules/lib1/locales']}
@@ -134,7 +133,7 @@ This configures the loader to work on a file structure like the following:
                    └── bar.yaml
 ```
 
-Everthing from `app/locales` will override anything specified in one to many libraries.
+Everything from `app/locales` will override anything specified in one to many libraries.
 
 ## Credit
 
