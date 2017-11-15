@@ -9,12 +9,6 @@
     "test:unit": "mocha",
     "test:watch": "mocha -w"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/mit-license.php"
-    }
-  ],
   "keywords": [
     "webpack",
     "loader",
@@ -22,6 +16,12 @@
     "locales",
     "yaml",
     "json"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
   ],
   "repository": {
     "type": "git",
