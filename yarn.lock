@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@alienfast/build@^2.0.135":
-  version "2.0.135"
-  resolved "https://registry.yarnpkg.com/@alienfast/build/-/build-2.0.135.tgz#c2b73202fe1aaf0a8cd127eabe4cd4e7b1ceb3d4"
+"@alienfast/build@^2.0.138":
+  version "2.0.138"
+  resolved "https://registry.yarnpkg.com/@alienfast/build/-/build-2.0.138.tgz#c9281051df428fc6325b5a9fcd5d200a3a60d186"
   dependencies:
     app-module-path "^2.2.0"
     babel-cli "^6.26.0"
