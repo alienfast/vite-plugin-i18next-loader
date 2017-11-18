@@ -135,6 +135,51 @@ This configures the loader to work on a file structure like the following:
 
 Everything from `app/locales` will override anything specified in one to many libraries.
 
+#### Use file basename as the i18next namespace
+```javascript
+{basenameAsNamespace: true}
+```
+
+The following file structure would result in resources loaded as below:
+```
+└── app
+    ├── src
+    │  └── app.js
+    └── locales
+       ├── index.js
+       └── en
+           ├── foo.json
+           └── bar.yaml
+```
+foo.json
+```
+{
+  "header": {
+    "title": "TITLE"
+  }
+}
+```
+bar.yaml
+```
+footer:
+  aboutUs: About us
+```
+Results in this object loaded:
+```
+"en": {
+  "foo": {
+    "header": {
+      "title":"TITLE"
+    }
+  },
+  "bar": {
+    "footer":{ 
+      "aboutUs":"About us"
+    }
+  }
+}
+```
+
 ## Credit
 
 This was forked from [i18next-resource-store-loader](https://github.com/atroo/i18next-resource-store-loader) because

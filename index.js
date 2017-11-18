@@ -50,13 +50,20 @@ module.exports = function () {
 
         const fileContent = fs.readFileSync(fullPath)
         const extname = path.extname(fullPath)
-        let parsedContent
-        if (extname === '.yaml' || extname === '.yml') {
-          parsedContent = yaml.safeLoad(fileContent)
+        let nameSpaceName = path.basename(fullPath, extname);
+        let parsedContent;
+        if (extname === ".yaml" || extname === ".yml") {
+          parsedContent = yaml.safeLoad(fileContent);
         } else {
-          parsedContent = JSON.parse(fileContent)
+          parsedContent = JSON.parse(fileContent);
         }
-        resBundle[ lang ] = parsedContent
+        if (options.basenameAsNamespace) {
+          const ns = resBundle[lang] || {};
+          ns[nameSpaceName] = parsedContent;
+          resBundle[lang] = ns;
+        } else {
+          resBundle[lang] = parsedContent;
+        }
         appResBundle = merge(appResBundle, resBundle)
       }
     }
