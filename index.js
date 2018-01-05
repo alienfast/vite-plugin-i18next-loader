@@ -27,13 +27,7 @@ module.exports = function () {
 
   if(!options.overrides) options.overrides = []
   const appLocalesDir = path.dirname(this.resource) // this is the absolute path to the index.js in the top level locales dir
-  if (!fs.existsSync(appLocalesDir)) {
-    throw new Error('Directory does not exist: ' + appLocalesDir + ' for resource: ' + this.resource)
-  }
   let appResBundle = {}
-  if (options.debug) {
-    console.info("Bundling locales from " + appLocalesDir + ' (ordered least specific to most):')
-  }
 
   // needs to be ordered in least specialized to most e.g. lib locale -> app locale
   const moduleLocalesDirs = options.overrides.map(override => path.join(appLocalesDir, override))
@@ -53,9 +47,6 @@ module.exports = function () {
       for (let j = 0; j < langFiles.length; j++) {
         const fullPath = langFiles[ j ]
         this.addDependency(fullPath)
-        if (options.debug) {
-          console.info("\t" + fullPath)
-        }
 
         const fileContent = fs.readFileSync(fullPath)
         const extname = path.extname(fullPath)
@@ -77,9 +68,5 @@ module.exports = function () {
       }
     }
   })
-  const bundle = JSON.stringify(appResBundle)
-  if (options.debug) {
-    console.info("Final locales bundle: \n" + bundle)
-  }
-  return 'module.exports = ' + bundle
+  return 'module.exports = ' + JSON.stringify(appResBundle)
 }
