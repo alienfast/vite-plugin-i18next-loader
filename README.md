@@ -59,7 +59,7 @@ module.exports = {
 ```javascript
 // File: app.js
 import i18n from 'i18next'
-import resources from '../locales'
+import resources from '../locales'  // typescript: import * as resources from '../locales'
 
 i18n.init({
   resources
