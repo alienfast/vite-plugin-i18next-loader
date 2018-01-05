@@ -1,6 +1,6 @@
 {
   "name": "@alienfast/i18next-loader",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Webpack loader for client embedded i18next locales from json or yaml.",
   "main": "index.js",
   "scripts": {
