@@ -9,9 +9,10 @@ This webpack loader generates the `resources` structure necessary for [i18next](
 
 ## Features
 
-- glob based file filtering
-- one to many overrides supporting reuse cases (white labeling)
-- yaml and json support 
+- [x] glob based file filtering
+- [x] one to many overrides supporting reuse cases (white labeling)
+- [x] yaml and json support 
+- [ ] locale chunking (help wanted - see [#6](https://github.com/alienfast/i18next-loader/issues/6))
  
 Given a locales directory, by default, the loader will find and parse any `json|yaml|yml` file and attribute the 
 contents to the containing lang folder e.g. `en`.  There is no need to add lang such as `en` or `de` inside your 
