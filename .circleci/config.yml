@@ -4,7 +4,7 @@ jobs:
       ignore:
       - master
     docker:
-    - image: alienfast/ci-ruby:2.0.7
+    - image: alienfast/ci-ruby:2.0.9
     steps:
     - checkout
     - add_ssh_keys
