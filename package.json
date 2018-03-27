@@ -36,13 +36,13 @@
   ],
   "dependencies": {
     "glob-all": "^3.1.0",
-    "js-yaml": "^3.10.0",
+    "js-yaml": "^3.11.0",
     "loader-utils": "^1.1.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.5"
   },
   "devDependencies": {
-    "@alienfast/build": "^3.0.28",
+    "@alienfast/build": "^4.0.18",
     "chai": "^4.1.2",
-    "mocha": "^5.0.0"
+    "mocha": "^5.0.5"
   }
 }
