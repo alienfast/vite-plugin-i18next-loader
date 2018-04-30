@@ -36,7 +36,13 @@ module.exports = function () {
   }
 
   // needs to be ordered in least specialized to most e.g. lib locale -> app locale
-  const moduleLocalesDirs = options.overrides.map(override => path.join(appLocalesDir, override))
+  const moduleLocalesDirs = options.overrides.map(override => {
+    if(path.isAbsolute(override)){
+      return override
+    } else {
+      return path.join(appLocalesDir, override)
+    }
+  })
   moduleLocalesDirs.push(appLocalesDir)
   moduleLocalesDirs.forEach((localesDir) => {
     // all subdirectories match language codes

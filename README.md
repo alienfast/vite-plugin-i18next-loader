@@ -112,7 +112,7 @@ Applications that reuse libraries e.g. white labeling, can utilize one to many s
 the app will override.  
 
 ```javascript
-{overrides: ['../node_modules/lib1/locales']}
+{overrides: ['../node_modules/lib1/locales']} // relative or absolute paths
 ```
 This configures the loader to work on a file structure like the following:
 
