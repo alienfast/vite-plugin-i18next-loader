@@ -3,7 +3,7 @@ const chai = require('chai')
 const assert = chai.assert
 const loader = require('../index')
 
-describe('basename', function () {
+describe('relativepath', function () {
   [ 'yaml', 'json' ].forEach((type) => {
     context(type, () => {
       let thisScope;
@@ -14,19 +14,19 @@ describe('basename', function () {
           addDependency: emptFn,
           addContextDependency: emptFn,
           cacheable: emptFn,
-          resource: path.join(__dirname, `./data/basic-app-${type}/locales/index.js`),
+          resource: path.join(__dirname, `./data/relativePathAsNamespace-${type}/locales/index.js`),
           query: {
-            basenameAsNamespace: true
+            relativePathAsNamespace: true
           }
         }
         done()
       })
 
       function assertCommon (resStore) {
-        assert.strictEqual(resStore.dev.main.main.test, 'Dev dev dev!')
-        assert.strictEqual(resStore.de.main.main.test, 'Das ist ein Test!')
-        assert.strictEqual(resStore.en.main.main.test, 'This is a test!')
-        assert.strictEqual(resStore.fr.main.main.test, 'Ceci est un test!')
+        assert.strictEqual(resStore.dev.main.main.main.test, 'Dev dev dev!')
+        assert.strictEqual(resStore.de.main.main.main.test, 'Das ist ein Test!')
+        assert.strictEqual(resStore.en.main.main.main.test, 'This is a test!')
+        assert.strictEqual(resStore.fr.main.main.main.test, 'Ceci est un test!')
       }
 
       it('should generate the structure', function () {

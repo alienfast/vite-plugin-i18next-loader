@@ -181,6 +181,79 @@ Results in this object loaded:
 }
 ```
 
+#### Use relative path as the i18next namespace
+```javascript
+{relativePathAsNamespace: true}
+```
+
+The following file structure would result in resources loaded as below:
+```
+└── app
+    └── locales
+       ├── index.js
+       └── en
+           ├── green.yaml
+           ├── blue
+           ├──── foo.yaml
+```
+green.yaml
+```
+tree:
+  species: Oak
+```
+blue/foo.yaml
+```
+water:
+  ocean: Quite large
+```
+Results in this object loaded:
+```
+"en": {
+  "green": {
+    "tree": {
+      "species":"Oak"
+    }
+  },
+  "blue": {
+    "foo":{ 
+      "water": {
+        "ocean": "Quite large"
+      }
+    }
+  }
+}
+```
+**NOTE:** If you have a file and a folder with the same name, you MIGHT overwrite one with the other. For example:
+```
+└── app
+    └── locales
+       ├── index.js
+       └── en
+           ├── blue.yaml
+           ├── blue
+           ├──── foo.yaml
+```
+blue.yaml
+```
+foo: Welcome
+```
+blue/foo.yaml
+```
+eggs: delicious
+```
+Results in this object loaded:
+```
+"en": {
+  "blue": {
+    "foo": {
+      "eggs": "delicious"
+    }
+  }
+}
+```
+But it's just overwriting based on the return value of `glob-all`, so you shouldn't depend on it.
+
+
 ## Credit
 
 This was forked from [i18next-resource-store-loader](https://github.com/atroo/i18next-resource-store-loader) because

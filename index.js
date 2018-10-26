@@ -4,6 +4,7 @@ const merge = require('lodash/merge')
 const globAll = require('glob-all')
 const loaderUtils = require('loader-utils')
 const yaml = require('js-yaml')
+const set = require("lodash/set");
 
 function enumerateLangs (dir) {
   return fs.readdirSync(dir).filter(function (file) {
@@ -65,17 +66,22 @@ module.exports = function () {
 
         const fileContent = fs.readFileSync(fullPath)
         const extname = path.extname(fullPath)
-        let nameSpaceName = path.basename(fullPath, extname);
         let parsedContent;
         if (extname === ".yaml" || extname === ".yml") {
           parsedContent = yaml.safeLoad(fileContent);
         } else {
           parsedContent = JSON.parse(fileContent);
         }
-        if (options.basenameAsNamespace) {
-          const ns = resBundle[lang] || {};
-          ns[nameSpaceName] = parsedContent;
-          resBundle[lang] = ns;
+        if (options.basenameAsNamespace || options.relativePathAsNamespace) {
+          let namespaceFilepath;
+          if (options.relativePathAsNamespace) {
+            namespaceFilepath = path.relative(path.join(localesDir, lang), fullPath)
+          } else if (options.basenameAsNamespace) {
+            namespaceFilepath = path.basename(fullPath)
+          }
+          const namespaceParts = namespaceFilepath.replace(extname, '').split(path.sep);
+          const namespace = [lang].concat(namespaceParts).join(".");
+          set(resBundle, namespace, parsedContent);
         } else {
           resBundle[lang] = parsedContent;
         }
