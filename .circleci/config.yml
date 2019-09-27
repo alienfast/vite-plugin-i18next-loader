@@ -25,7 +25,7 @@ jobs:
               then \
                  yarn run releaseAuto \
                  && npm publish \
-                 && npm publish pkg --ignore-scripts --@alienfast:registry='https://registry.npmjs.org'
+                 && npm publish --ignore-scripts --@alienfast:registry='https://registry.npmjs.org'
             fi
           name: Finish release and publish to npm
     working_directory: ~/project
