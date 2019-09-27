@@ -1,10 +1,12 @@
 {
   "name": "@alienfast/i18next-loader",
-  "version": "1.0.18",
+  "version": "1.1.0",
   "description": "Webpack loader for client embedded i18next locales from json or yaml.",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "scripts": {
-    "release": "npm publish --access public",
     "test": "yarn test:unit",
     "test:unit": "mocha",
     "test:watch": "mocha -w"
