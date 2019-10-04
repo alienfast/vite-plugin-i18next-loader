@@ -19,7 +19,7 @@ jobs:
             - ~/.cache/yarn/v1
             - .eslintcache
       - deploy:
-          # cross publish first to github package registry, second to npmjs (public package)
+          # publish first to github package registry, second to npmjs (public package)
           command: |
             if [ "${CIRCLE_BRANCH}" == "develop" ];
               then \

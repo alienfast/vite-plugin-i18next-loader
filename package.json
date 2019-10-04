@@ -43,7 +43,7 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@alienfast/build": "^4.1.121",
+    "@alienfast/ci": "^7.0.2",
     "chai": "^4.2.0",
     "mocha": "^6.2.0"
   }
