@@ -2,21 +2,21 @@
 # yarn lockfile v1
 
 
-"@alienfast/ci@^7.0.2":
-  version "7.0.2"
-  resolved "https://npm.pkg.github.com/download/@alienfast/ci/7.0.2/500e149e685f1d52dd67b86a81eae29c7983d3ac23ef5dda9d1b79f22c748bba#5e7be01f47a50b2a11611dffb52d6b3acdf3b5a9"
-  integrity sha1-XnvgH0elCyoRYR3/tS1rOs3ztak=
+"@alienfast/ci@^7.0.6":
+  version "7.0.6"
+  resolved "https://npm.pkg.github.com/download/@alienfast/ci/7.0.6/6e5dc8014dbdf34917d3727f1e8864b1d6258d0f93ffc0af55dfa7a9fbf53001#578b2f4a4aae9b762641e71f564d2336b66a021c"
+  integrity sha1-V4svSkqum3YmQecfVk0jNrZqAhw=
   dependencies:
-    "@alienfast/common-node" "^7.0.2"
-    "@alienfast/logger" "^7.0.2"
-    "@alienfast/logger-node" "^7.0.2"
+    "@alienfast/common-node" "^7.0.6"
+    "@alienfast/logger" "^7.0.6"
+    "@alienfast/logger-node" "^7.0.6"
     "@types/dotenv" "^6.1.1"
     "@types/fs-extra" "^8.0.0"
-    "@types/lodash" "^4.14.138"
+    "@types/lodash" "^4.14.141"
     "@types/semver" "^6.0.2"
     "@types/shelljs" "^0.8.5"
-    "@types/yargs" "^13.0.2"
-    date-fns "^2.1.0"
+    "@types/yargs" "^13.0.3"
+    date-fns "^2.4.1"
     dotenv "^8.1.0"
     fs-extra "^8.1.0"
     glob-all "^3.1.0"
@@ -26,21 +26,19 @@
     semver "^6.3.0"
     shelljs "^0.8.3"
     yargs "^14.0.0"
-  optionalDependencies:
-    fsevents "^2.0.7"
 
-"@alienfast/common-node@^7.0.2":
-  version "7.0.2"
-  resolved "https://npm.pkg.github.com/download/@alienfast/common-node/7.0.2/b92bed18d7bf4d48207ebcb645afb0c561e053d46c23e7d657e130df30076dd5#a094e6d534b6ea1a5758d78468b43cd69e205c41"
-  integrity sha1-oJTm1TS26hpXWNeEaLQ81p4gXEE=
+"@alienfast/common-node@^7.0.6":
+  version "7.0.6"
+  resolved "https://npm.pkg.github.com/download/@alienfast/common-node/7.0.6/c51760b706e351596c4a3226af30e0d433b027ba16f5de8455acf1bb318e5af4#537544b565dbd117a15c4aba3d15b5c5134f3517"
+  integrity sha1-U3VEtWXb0RehXEq6PRW1xRNPNRc=
   dependencies:
-    "@alienfast/logger" "^7.0.2"
+    "@alienfast/logger" "^7.0.6"
     "@types/del" "^4.0.0"
     "@types/findup-sync" "^2.0.2"
     "@types/fs-extra" "^8.0.0"
     "@types/js-yaml" "^3.12.1"
-    "@types/lodash" "^4.14.138"
-    "@types/node" "12.7.5"
+    "@types/lodash" "^4.14.141"
+    "@types/node" "12.7.11"
     "@types/shelljs" "^0.8.5"
     "@types/stringify-object" "^3.2.0"
     "@types/strip-json-comments" "^3.0.0"
@@ -49,7 +47,7 @@
     findup-sync "^4.0.0"
     fs-extra "^8.1.0"
     glob-all "^3.1.0"
-    i18next "^17.0.14"
+    i18next "^17.0.18"
     js-yaml "^3.13.1"
     lodash "^4.17.15"
     shelljs "^0.8.3"
@@ -57,32 +55,32 @@
     strip-json-comments "^3.0.1"
     time-stamp "^2.2.0"
 
-"@alienfast/common@^7.0.2":
-  version "7.0.2"
-  resolved "https://npm.pkg.github.com/download/@alienfast/common/7.0.2/02045614cec68296d9ae0fe0a83209058157dbf076eabceae695da1901f41bbb#d5c77ba3f167c59939e9688c7d59113446de2773"
-  integrity sha1-1cd7o/FnxZk56WiMfVkRNEbeJ3M=
+"@alienfast/common@^7.0.6":
+  version "7.0.6"
+  resolved "https://npm.pkg.github.com/download/@alienfast/common/7.0.6/3457c1d7cab3467321aa8920e9f3dfdfd64ecc8d7ba8766a5b31c238a55e776e#e7bf7353a1be9c0656205b0dd79ffec1d92c0d3c"
+  integrity sha1-579zU6G+nAZWIFsN15/+wdksDTw=
   dependencies:
     "@types/jest" "^24.0.18"
-    "@types/lodash" "^4.14.138"
-    i18next "^17.0.14"
+    "@types/lodash" "^4.14.141"
+    i18next "^17.0.18"
     js-cookie "^2.2.1"
     lodash "^4.17.15"
 
-"@alienfast/logger-node@^7.0.2":
-  version "7.0.2"
-  resolved "https://npm.pkg.github.com/download/@alienfast/logger-node/7.0.2/b5649148a9b4897b66de8714614e0d98c952f09f72f1b3d4a76c2e1fcf697790#b83b78c096beef5b1aaa7aa7b487d127608a19ff"
-  integrity sha1-uDt4wJa+71saqnqntIfRJ2CKGf8=
+"@alienfast/logger-node@^7.0.6":
+  version "7.0.6"
+  resolved "https://npm.pkg.github.com/download/@alienfast/logger-node/7.0.6/39f8d2f2813bf6c83667df2abf2ad2b7e5e64f900665eefec0b4515fdb09dda3#b33767beb5c106bda5406bd44e189f2aafa697c8"
+  integrity sha1-szdnvrXBBr2lQGvUThifKq+ml8g=
   dependencies:
-    "@alienfast/logger" "^7.0.2"
+    "@alienfast/logger" "^7.0.6"
     chalk "^2.4.2"
     time-stamp "^2.2.0"
 
-"@alienfast/logger@^7.0.2":
-  version "7.0.2"
-  resolved "https://npm.pkg.github.com/download/@alienfast/logger/7.0.2/1c604954459b38719584a2bafc6151ef910c07c57a210c81a19c8e3183a12b3c#fb1e4557668cc0ff05d65b1c5549ac0a171d4a8e"
-  integrity sha1-+x5FV2aMwP8F1lscVUmsChcdSo4=
+"@alienfast/logger@^7.0.6":
+  version "7.0.6"
+  resolved "https://npm.pkg.github.com/download/@alienfast/logger/7.0.6/831b573b1e50a04da97ee98f480b5fad15f3fcca772c98e309dd6563fcc48511#215091981ec9a10b148a4b1ca684ef37cb9947ef"
+  integrity sha1-IVCRmB7JoQsUikscpoTvN8uZR+8=
   dependencies:
-    "@alienfast/common" "^7.0.2"
+    "@alienfast/common" "^7.0.6"
 
 "@babel/runtime@^7.3.1":
   version "7.6.2"
@@ -176,10 +174,10 @@
   resolved "https://registry.yarnpkg.com/@types/js-yaml/-/js-yaml-3.12.1.tgz#5c6f4a1eabca84792fbd916f0cb40847f123c656"
   integrity sha512-SGGAhXLHDx+PK4YLNcNGa6goPf9XRWQNAUUbffkwVGGXIxmDKWyGGL4inzq2sPmExu431Ekb9aEMn9BkPqEYFA==
 
-"@types/lodash@^4.14.138":
-  version "4.14.141"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.141.tgz#d81f4d0c562abe28713406b571ffb27692a82ae6"
-  integrity sha512-v5NYIi9qEbFEUpCyikmnOYe4YlP8BMUdTcNCAquAKzu+FA7rZ1onj9x80mbnDdOW/K5bFf3Tv5kJplP33+gAbQ==
+"@types/lodash@^4.14.141":
+  version "4.14.142"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.142.tgz#52d5daff878e36e72e299bb9c5871fd6aee55829"
+  integrity sha512-ZhNS7c4D4WQ49Dr1FftQj7SwngRswOnPfxktmqSy5BettRCuum2q784jRwNTYfxH00r8+fEgRz6Da8j5DHNd1Q==
 
 "@types/micromatch@*":
   version "3.1.0"
@@ -198,10 +196,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.0.tgz#ea6dcbddbc5b584c83f06c60e82736d8fbb0c235"
   integrity sha512-3TUHC3jsBAB7qVRGxT6lWyYo2v96BMmD2PTcl47H25Lu7UXtFH/2qqmKiVrnel6Ne//0TFYf6uvNX+HW2FRkLQ==
 
-"@types/node@12.7.5":
-  version "12.7.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.5.tgz#e19436e7f8e9b4601005d73673b6dc4784ffcc2f"
-  integrity sha512-9fq4jZVhPNW8r+UYKnxF1e2HkDWOWKM5bC2/7c9wPV835I0aOrVbS/Hw/pWPk2uKrNXQqg9Z959Kz+IYDd5p3w==
+"@types/node@12.7.11":
+  version "12.7.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.11.tgz#be879b52031cfb5d295b047f5462d8ef1a716446"
+  integrity sha512-Otxmr2rrZLKRYIybtdG/sgeO+tHY20GxeDjcGmUnmmlCWyEnv2a2x1ZXBo3BTec4OiTXMQCiazB8NMBf0iRlFw==
 
 "@types/semver@^6.0.2":
   version "6.0.2"
@@ -233,7 +231,7 @@
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-13.1.0.tgz#c563aa192f39350a1d18da36c5a8da382bbd8228"
   integrity sha512-gCubfBUZ6KxzoibJ+SCUc/57Ms1jz5NjHe4+dI2krNmU5zCPAphyLJYyTOg06ueIyfj+SaCUqmzun7ImlxDcKg==
 
-"@types/yargs@^13.0.2":
+"@types/yargs@^13.0.3":
   version "13.0.3"
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-13.0.3.tgz#76482af3981d4412d65371a318f992d33464a380"
   integrity sha512-K8/LfZq2duW33XW/tFwEAfnZlqIfVsoyRB3kfXdPXYhl0nfM8mmh7GS0jg7WrX2Dgq/0Ha/pR1PaR+BvmWwjiQ==
@@ -388,7 +386,7 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-date-fns@^2.1.0:
+date-fns@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.4.1.tgz#b53f9bb65ae6bd9239437035710e01cf383b625e"
   integrity sha512-2RhmH/sjDSCYW2F3ZQxOUx/I7PvzXpi89aQL2d3OAxSTwLx6NilATeUbe0menFE3Lu5lFkOFci36ivimwYHHxw==
@@ -566,11 +564,6 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
-fsevents@^2.0.7:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.1.0.tgz#ce1a5f9ac71c6d75278b0c5bd236d7dfece4cbaa"
-  integrity sha512-+iXhW3LuDQsno8dOIrCIT/CBjeBWuP7PXe8w9shnj9Lebny/Gx1ZjVBYwexLz36Ri2jKuXMNpV6CYNh8lHHgrQ==
-
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
@@ -708,10 +701,10 @@ homedir-polyfill@^1.0.1:
   dependencies:
     parse-passwd "^1.0.0"
 
-i18next@^17.0.14:
-  version "17.0.18"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.0.18.tgz#cca2503125af2370daa4657c5320d5ef6924c23a"
-  integrity sha512-FpLbLwzYV/qen9ZTA+mOHiNzLxESnF+sQCe5wT7UShssfDiW/df5JdXuxnPsPQiUd+M1kpB3Jaawcn9RN6atig==
+i18next@^17.0.18:
+  version "17.1.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.1.0.tgz#7f9fd49becf0c5634750d8af657ff311e9db5639"
+  integrity sha512-OecCfr3GjgQk0KycJhUfFPaQ1SDv/mozg8nAYT58O37dQbRHSQ3YYv7L0VwJhRswiXIBKJc0XOgrXSMSnJE1lA==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
