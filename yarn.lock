@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@alienfast/ci@^7.0.6":
-  version "7.0.6"
-  resolved "https://npm.pkg.github.com/download/@alienfast/ci/7.0.6/6e5dc8014dbdf34917d3727f1e8864b1d6258d0f93ffc0af55dfa7a9fbf53001#578b2f4a4aae9b762641e71f564d2336b66a021c"
-  integrity sha1-V4svSkqum3YmQecfVk0jNrZqAhw=
+"@alienfast/ci@^7.0.7":
+  version "7.0.7"
+  resolved "https://npm.pkg.github.com/download/@alienfast/ci/7.0.7/f12a40cba72273ada6b90db3cf10a3a31fbf79d04d451d97d3617d6e3f31a59a#f5647b4d418e3a1cac46c32b256b1b6e8889a848"
+  integrity sha1-9WR7TUGOOhysRsMrJWsbboiJqEg=
   dependencies:
-    "@alienfast/common-node" "^7.0.6"
-    "@alienfast/logger" "^7.0.6"
-    "@alienfast/logger-node" "^7.0.6"
+    "@alienfast/common-node" "^7.0.7"
+    "@alienfast/logger" "^7.0.7"
+    "@alienfast/logger-node" "^7.0.7"
     "@types/dotenv" "^6.1.1"
     "@types/fs-extra" "^8.0.0"
-    "@types/lodash" "^4.14.141"
+    "@types/lodash" "^4.14.142"
     "@types/semver" "^6.0.2"
     "@types/shelljs" "^0.8.5"
     "@types/yargs" "^13.0.3"
@@ -25,20 +25,20 @@
     randomatic "^3.1.1"
     semver "^6.3.0"
     shelljs "^0.8.3"
-    yargs "^14.0.0"
+    yargs "^14.2.0"
 
-"@alienfast/common-node@^7.0.6":
-  version "7.0.6"
-  resolved "https://npm.pkg.github.com/download/@alienfast/common-node/7.0.6/c51760b706e351596c4a3226af30e0d433b027ba16f5de8455acf1bb318e5af4#537544b565dbd117a15c4aba3d15b5c5134f3517"
-  integrity sha1-U3VEtWXb0RehXEq6PRW1xRNPNRc=
+"@alienfast/common-node@^7.0.7":
+  version "7.0.7"
+  resolved "https://npm.pkg.github.com/download/@alienfast/common-node/7.0.7/31d0b372dfd9ca1da8b6ce46d4c08d8744c5396710870391bf92879308737796#83a1a5146eb5a6d95c047f73c364ece8bed94681"
+  integrity sha1-g6GlFG61ptlcBH9zw2Ts6L7ZRoE=
   dependencies:
-    "@alienfast/logger" "^7.0.6"
+    "@alienfast/logger" "^7.0.7"
     "@types/del" "^4.0.0"
     "@types/findup-sync" "^2.0.2"
     "@types/fs-extra" "^8.0.0"
     "@types/js-yaml" "^3.12.1"
-    "@types/lodash" "^4.14.141"
-    "@types/node" "12.7.11"
+    "@types/lodash" "^4.14.142"
+    "@types/node" "12.7.12"
     "@types/shelljs" "^0.8.5"
     "@types/stringify-object" "^3.2.0"
     "@types/strip-json-comments" "^3.0.0"
@@ -47,7 +47,7 @@
     findup-sync "^4.0.0"
     fs-extra "^8.1.0"
     glob-all "^3.1.0"
-    i18next "^17.0.18"
+    i18next "^17.1.0"
     js-yaml "^3.13.1"
     lodash "^4.17.15"
     shelljs "^0.8.3"
@@ -55,32 +55,32 @@
     strip-json-comments "^3.0.1"
     time-stamp "^2.2.0"
 
-"@alienfast/common@^7.0.6":
-  version "7.0.6"
-  resolved "https://npm.pkg.github.com/download/@alienfast/common/7.0.6/3457c1d7cab3467321aa8920e9f3dfdfd64ecc8d7ba8766a5b31c238a55e776e#e7bf7353a1be9c0656205b0dd79ffec1d92c0d3c"
-  integrity sha1-579zU6G+nAZWIFsN15/+wdksDTw=
+"@alienfast/common@^7.0.7":
+  version "7.0.7"
+  resolved "https://npm.pkg.github.com/download/@alienfast/common/7.0.7/e189f3beeb111350bf89884dd817d0ffaa3ee44e502611af3988d5165a06bdbd#78ea5459c73f1ec378d87da8a2f47de3dbcc9083"
+  integrity sha1-eOpUWcc/HsN42H2oovR949vMkIM=
   dependencies:
     "@types/jest" "^24.0.18"
-    "@types/lodash" "^4.14.141"
-    i18next "^17.0.18"
+    "@types/lodash" "^4.14.142"
+    i18next "^17.1.0"
     js-cookie "^2.2.1"
     lodash "^4.17.15"
 
-"@alienfast/logger-node@^7.0.6":
-  version "7.0.6"
-  resolved "https://npm.pkg.github.com/download/@alienfast/logger-node/7.0.6/39f8d2f2813bf6c83667df2abf2ad2b7e5e64f900665eefec0b4515fdb09dda3#b33767beb5c106bda5406bd44e189f2aafa697c8"
-  integrity sha1-szdnvrXBBr2lQGvUThifKq+ml8g=
+"@alienfast/logger-node@^7.0.7":
+  version "7.0.7"
+  resolved "https://npm.pkg.github.com/download/@alienfast/logger-node/7.0.7/1ac9e6c536371e900046af59e91b90fbe17b2142fd0f73ba0af953e10284129f#d243d7d4d15b3dba573f3bef7ea2073be0bd1963"
+  integrity sha1-0kPX1NFbPbpXPzvvfqIHO+C9GWM=
   dependencies:
-    "@alienfast/logger" "^7.0.6"
+    "@alienfast/logger" "^7.0.7"
     chalk "^2.4.2"
     time-stamp "^2.2.0"
 
-"@alienfast/logger@^7.0.6":
-  version "7.0.6"
-  resolved "https://npm.pkg.github.com/download/@alienfast/logger/7.0.6/831b573b1e50a04da97ee98f480b5fad15f3fcca772c98e309dd6563fcc48511#215091981ec9a10b148a4b1ca684ef37cb9947ef"
-  integrity sha1-IVCRmB7JoQsUikscpoTvN8uZR+8=
+"@alienfast/logger@^7.0.7":
+  version "7.0.7"
+  resolved "https://npm.pkg.github.com/download/@alienfast/logger/7.0.7/b3e07e5c8fffcd735a965ec8d4fd6c124fdd68cf1ce64bbfdaa745145e651064#4125b13fd5c4512f83d49311d99a9e75d564b6c8"
+  integrity sha1-QSWxP9XEUS+D1JMR2ZqeddVktsg=
   dependencies:
-    "@alienfast/common" "^7.0.6"
+    "@alienfast/common" "^7.0.7"
 
 "@babel/runtime@^7.3.1":
   version "7.6.2"
@@ -174,10 +174,10 @@
   resolved "https://registry.yarnpkg.com/@types/js-yaml/-/js-yaml-3.12.1.tgz#5c6f4a1eabca84792fbd916f0cb40847f123c656"
   integrity sha512-SGGAhXLHDx+PK4YLNcNGa6goPf9XRWQNAUUbffkwVGGXIxmDKWyGGL4inzq2sPmExu431Ekb9aEMn9BkPqEYFA==
 
-"@types/lodash@^4.14.141":
-  version "4.14.142"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.142.tgz#52d5daff878e36e72e299bb9c5871fd6aee55829"
-  integrity sha512-ZhNS7c4D4WQ49Dr1FftQj7SwngRswOnPfxktmqSy5BettRCuum2q784jRwNTYfxH00r8+fEgRz6Da8j5DHNd1Q==
+"@types/lodash@^4.14.142":
+  version "4.14.143"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.143.tgz#59b5813a284ea981ad33da8d9ebe4582997a6938"
+  integrity sha512-SJjLJkaSVYfRTLdi5llaabRVjWHQ86McEJ0BGNzHYREtJvlnJEHlaLcZ8s7Ah091QFfOeZTtiduoUN2gTcpTng==
 
 "@types/micromatch@*":
   version "3.1.0"
@@ -196,10 +196,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.0.tgz#ea6dcbddbc5b584c83f06c60e82736d8fbb0c235"
   integrity sha512-3TUHC3jsBAB7qVRGxT6lWyYo2v96BMmD2PTcl47H25Lu7UXtFH/2qqmKiVrnel6Ne//0TFYf6uvNX+HW2FRkLQ==
 
-"@types/node@12.7.11":
-  version "12.7.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.11.tgz#be879b52031cfb5d295b047f5462d8ef1a716446"
-  integrity sha512-Otxmr2rrZLKRYIybtdG/sgeO+tHY20GxeDjcGmUnmmlCWyEnv2a2x1ZXBo3BTec4OiTXMQCiazB8NMBf0iRlFw==
+"@types/node@12.7.12":
+  version "12.7.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.12.tgz#7c6c571cc2f3f3ac4a59a5f2bd48f5bdbc8653cc"
+  integrity sha512-KPYGmfD0/b1eXurQ59fXD1GBzhSQfz6/lKBxkaHX9dKTzjXbK68Zt7yGUxUsCS1jeTy/8aL+d9JEr+S54mpkWQ==
 
 "@types/semver@^6.0.2":
   version "6.0.2"
@@ -701,7 +701,7 @@ homedir-polyfill@^1.0.1:
   dependencies:
     parse-passwd "^1.0.0"
 
-i18next@^17.0.18:
+i18next@^17.1.0:
   version "17.1.0"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.1.0.tgz#7f9fd49becf0c5634750d8af657ff311e9db5639"
   integrity sha512-OecCfr3GjgQk0KycJhUfFPaQ1SDv/mozg8nAYT58O37dQbRHSQ3YYv7L0VwJhRswiXIBKJc0XOgrXSMSnJE1lA==
@@ -1314,6 +1314,14 @@ yargs-parser@13.1.1, yargs-parser@^13.1.1:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
+yargs-parser@^15.0.0:
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-15.0.0.tgz#cdd7a97490ec836195f59f3f4dbe5ea9e8f75f08"
+  integrity sha512-xLTUnCMc4JhxrPEPUYD5IBR1mWCK/aT6+RJ/K29JY2y1vD+FhtgKK0AXRWvI262q3QSffAQuTouFIKUuHX89wQ==
+  dependencies:
+    camelcase "^5.0.0"
+    decamelize "^1.2.0"
+
 yargs-unparser@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/yargs-unparser/-/yargs-unparser-1.6.0.tgz#ef25c2c769ff6bd09e4b0f9d7c605fb27846ea9f"
@@ -1339,10 +1347,10 @@ yargs@13.3.0, yargs@^13.3.0:
     y18n "^4.0.0"
     yargs-parser "^13.1.1"
 
-yargs@^14.0.0:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-14.0.0.tgz#ba4cacc802b3c0b3e36a9e791723763d57a85066"
-  integrity sha512-ssa5JuRjMeZEUjg7bEL99AwpitxU/zWGAGpdj0di41pOEmJti8NR6kyUIJBkR78DTYNPZOU08luUo0GTHuB+ow==
+yargs@^14.2.0:
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-14.2.0.tgz#f116a9242c4ed8668790b40759b4906c276e76c3"
+  integrity sha512-/is78VKbKs70bVZH7w4YaZea6xcJWOAwkhbR0CFuZBmYtfTYF0xjGJF43AYd8g2Uii1yJwmS5GR2vBmrc32sbg==
   dependencies:
     cliui "^5.0.0"
     decamelize "^1.2.0"
@@ -1354,7 +1362,7 @@ yargs@^14.0.0:
     string-width "^3.0.0"
     which-module "^2.0.0"
     y18n "^4.0.0"
-    yargs-parser "^13.1.1"
+    yargs-parser "^15.0.0"
 
 yargs@~1.2.6:
   version "1.2.6"
