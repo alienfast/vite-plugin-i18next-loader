@@ -24,10 +24,9 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "develop" ];
               then \
                  yarn run releaseAuto \
-                 && npm publish 
+                 && npm publish \
+                 && npm publish --ignore-scripts --@alienfast:registry='https://registry.npmjs.org'
             fi
-                #  && npm publish \
-                #  && npm publish --ignore-scripts --@alienfast:registry='https://registry.npmjs.org'
           name: Finish release and publish to npm
     working_directory: ~/project
 version: 2
