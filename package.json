@@ -1,6 +1,6 @@
 {
   "name": "@alienfast/i18next-loader",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Webpack loader for client embedded i18next locales from json or yaml.",
   "publishConfig": {
     "access": "public"
@@ -43,7 +43,7 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@alienfast/ci": "^7.0.2",
+    "@alienfast/ci": "^7.0.6",
     "chai": "^4.2.0",
     "mocha": "^6.2.1"
   }
