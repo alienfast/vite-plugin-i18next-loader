@@ -1,9 +1,11 @@
-# @alienfast/i18next-loader
+# vite-plugin-i18next-loader
 
-[![CircleCI](https://circleci.com/gh/alienfast/i18next-loader/tree/develop.svg?style=svg&circle-token=9de60bf76b13f269bb560cd89ea253c9c04238ce)](https://circleci.com/gh/alienfast/i18next-loader/tree/develop)
-[![npm version](https://badge.fury.io/js/%40alienfast%2Fi18next-loader.svg)](https://badge.fury.io/js/%40alienfast%2Fi18next-loader)
+# WIP - recent fork/development - DOCs not accurate
 
-`yarn add -D @alienfast/i18next-loader`
+
+[![npm version](https://badge.fury.io/js/vite-plugin-i18next-loader.svg)](https://badge.fury.io/js/vite-plugin-i18next-loader)
+
+`yarn add -D vite-plugin-i18next-loader`
 
 This webpack loader generates the `resources` structure necessary for [i18next](https://github.com/i18next/i18next).  The structure is webpacked with the client bundle at build time, thus avoiding loading any language resources via extra HTTP requests.
 
@@ -12,13 +14,12 @@ This webpack loader generates the `resources` structure necessary for [i18next](
 - [x] glob based file filtering
 - [x] one to many overrides supporting reuse cases (white labeling)
 - [x] yaml and json support 
-- [ ] locale chunking (help wanted - see [#6](https://github.com/alienfast/i18next-loader/issues/6))
  
 Given a locales directory, by default, the loader will find and parse any `json|yaml|yml` file and attribute the 
 contents to the containing lang folder e.g. `en`.  There is no need to add lang such as `en` or `de` inside your 
 `json` or `yaml` files.
  
-See the [`test/data` directory](https://github.com/alienfast/i18next-loader/tree/develop/test/data) for structure and example data.
+See the [`test/data` directory](https://github.com/alienfast/vite-plugin-i18next-loader/tree/develop/test/data) for structure and example data.
 
 ## Usage
 
@@ -47,7 +48,7 @@ module.exports = {
     rules: [
       {
         test: /locales/,
-        loader: '@alienfast/i18next-loader',
+        loader: 'vite-plugin-i18next-loader',
         // options here
         //query: { overrides: [ '../node_modules/lib/locales' ] }
       }
@@ -75,7 +76,7 @@ i18n.t('key')
 ```javascript
 // File: app.js
 import i18n from 'i18next'
-import resources from '@alienfast/i18next-loader!../locales/index.js'
+import resources from 'vite-plugin-i18next-loader!../locales/index.js'
 
 i18n.init({
   resources

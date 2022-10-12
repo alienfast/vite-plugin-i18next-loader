@@ -1,18 +1,25 @@
 {
-  "name": "@alienfast/i18next-loader",
-  "version": "1.1.4",
-  "description": "Webpack loader for client embedded i18next locales from json or yaml.",
+  "name": "vite-plugin-i18next-loader",
+  "version": "0.0.1",
+  "description": "Vite plugin loader for client embedded i18next locales from json or yaml.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
-  "main": "index.js",
   "scripts": {
+    "build": "tsup-node",
     "test": "yarn test:unit",
-    "test:unit": "mocha",
-    "test:watch": "mocha -w"
+    "test:unit": "vitest"
   },
   "keywords": [
-    "webpack",
+    "vite-plugin",
     "loader",
     "i18next",
     "locales",
@@ -40,11 +47,19 @@
     "glob-all": "^3.1.0",
     "js-yaml": "^3.13.1",
     "loader-utils": "^1.2.3",
-    "lodash": "^4.17.15"
+    "lodash-es": "^4.17.15"
   },
   "devDependencies": {
-    "@alienfast/ci": "^7.0.7",
-    "chai": "^4.2.0",
-    "mocha": "^6.2.1"
+    "@alienfast/eslint-config": "^4.0.3",
+    "@types/node": "^18.8.3",
+    "@types/rimraf": "^3",
+    "eslint": "^8.24.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.4",
+    "vite": "^3.1.6",
+    "vitest": "^0.23.4"
   }
 }

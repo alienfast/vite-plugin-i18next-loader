@@ -1,1 +1,23 @@
+*.log
+tmp
+./dist
+.eslintcache
+tsconfig.tsbuildinfo
+
+# yarn zero install enabled
+.pnp.*
+.yarn/*
+!.yarn/cache
+!.yarn/unplugged
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+
 node_modules
+
+# avoid workspace changed errors for native versions
+.yarn/cache/esbuild-*-64-*
+.yarn/cache/@swc-core-*

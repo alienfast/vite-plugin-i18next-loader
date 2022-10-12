@@ -1,0 +1,12 @@
+.DS_Store
+tsconfig.json
+tsconfig.tsbuildinfo
+./.*
+yarn.lock
+node_modules
+tsup.config.ts
+tsconfig.json
+
+# don't omit nested directories of the same name
+./src
+./test

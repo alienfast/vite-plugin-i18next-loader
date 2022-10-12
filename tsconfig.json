@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+
+  "include": ["src", "./typings/**/*"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+
+    // af shared node base
+    "moduleResolution": "node",
+
+    // "module": "NodeNext",
+    "module": "esnext", // pulumi complains of es2022
+    "target": "esnext", // pulumi complains of es2022
+
+    // ----
+    // https://github.com/sindresorhus/tsconfig/blob/main/tsconfig.json
+    "lib": ["dom", "dom.iterable", "es2020"],
+
+    "allowSyntheticDefaultImports": true, // To provide backwards compatibility, Node.js allows you to import most CommonJS packages with a default import. This flag tells TypeScript that it's okay to use import on CommonJS modules.
+    "resolveJsonModule": true,
+
+    // ----
+    // from node18 base, but changed lib/module/target
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // ----
+    // Our alterations to the base
+    // "allowSyntheticDefaultImports": true,
+
+    // Ensure that .d.ts files are created by tsc
+    "declaration": true,
+    // Do not allow js
+    "allowJs": false,
+    // No js, ts, maps when errors are reported
+    "noEmitOnError": true,
+    // Do not allow inference to fall back to any type
+    "noImplicitAny": true,
+    // Ensure a return path
+    "noImplicitReturns": true,
+    // Report errors on unused local variables.
+    "noUnusedLocals": false,
+    // obj[foo] suppression
+    "suppressImplicitAnyIndexErrors": true,
+
+    // vite suggestions
+    "useDefineForClassFields": true
+  }
+}
