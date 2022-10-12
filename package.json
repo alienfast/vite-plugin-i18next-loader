@@ -48,6 +48,9 @@
       "email": "kevin.ross@alienfast.com"
     }
   ],
+  "peerDependencies": {
+    "vite": ">=3.1.6"
+  },
   "dependencies": {
     "glob-all": "^3.1.0",
     "js-yaml": "^3.13.1",
