@@ -36,8 +36,8 @@ export interface Options {
 // for fast match on hot reloading check?
 let loadedFiles: string[] = []
 
-const virtualModuleId = 'virtual:i18next'
-const resolvedVirtualModuleId = '\0' + virtualModuleId
+const virtualModuleId = 'virtual:i18next-loader'
+export const resolvedVirtualModuleId = '\0' + virtualModuleId
 
 const factory = (options: Options) => {
   function debug(...args: any[]) {

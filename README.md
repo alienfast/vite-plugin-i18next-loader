@@ -1,10 +1,10 @@
 # vite-plugin-i18next-loader
 
-# WIP - recent fork/development - DOCs not accurate
-
 [![npm version](https://badge.fury.io/js/vite-plugin-i18next-loader.svg)](https://badge.fury.io/js/vite-plugin-i18next-loader)
 
 `yarn add -D vite-plugin-i18next-loader`
+
+Vite plugin to client bundle i18next locales composited from one to many json or yaml files.
 
 This vite-plugin i18next loader generates the `resources` structure necessary for [i18next](https://github.com/i18next/i18next). The structure is made available as a [virtual module](https://vitejs.dev/guide/api-plugin.html#virtual-modules-convention) to the client bundle at build time, thus avoiding loading any language resources via extra HTTP requests.
 
@@ -45,14 +45,14 @@ import { defineConfig } from 'vite'
 import i18nextLoader from 'vite-plugin-i18next-loader'
 
 export default defineConfig({
-  plugins: [i18nextLoader()],
+  plugins: [i18nextLoader({ paths: ['./node_modules/foo/locales', './locales'] })],
 })
 ```
 
 ```typescript
 // File: app.ts
 import i18n from 'i18next'
-import resources from 'virtual:i18next'
+import resources from 'virtual:i18next-loader'
 
 i18n.init({
   resources,
