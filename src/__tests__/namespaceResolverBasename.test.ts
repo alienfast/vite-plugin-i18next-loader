@@ -1,40 +1,38 @@
-const path = require('node:path')
-const chai = require('chai')
+/* eslint-disable unicorn/prefer-module */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+import * as path from 'node:path'
 
-const assert = chai.assert
-const loader = require('../index')
+import { beforeEach, describe, expect, it } from 'vitest'
+
+import factory, { resolvedVirtualModuleId } from '..'
+import { esm, ThisScope } from './util'
 
 describe('namespaceResolverBasename', () => {
-  ;['yaml', 'json'].forEach((type) => {
-    context(type, () => {
-      let thisScope
-      beforeEach(function (done) {
-        //mock webpack loader this scope
-        const emptFn = () => {}
+  for (const type of ['yaml', 'json']) {
+    const appLocalesDir = path.join(__dirname, `./data/basic-app-${type}/locales`)
+    describe(type, () => {
+      let thisScope: ThisScope
+
+      beforeEach(() => {
+        // mock vite-plugin `this` scope
         thisScope = {
-          addDependency: emptFn,
-          addContextDependency: emptFn,
-          cacheable: emptFn,
-          resource: path.join(__dirname, `./data/basic-app-${type}/locales/index.js`),
-          query: {
-            basenameAsNamespace: true,
-          },
+          addWatchFile: () => {},
         }
-        done()
       })
 
-      function assertCommon(resStore) {
+      function assertCommon(resStore: any) {
         expect(resStore.dev.main.main.test).toStrictEqual('Dev dev dev!')
         expect(resStore.de.main.main.test).toStrictEqual('Das ist ein Test!')
         expect(resStore.en.main.main.test).toStrictEqual('This is a test!')
         expect(resStore.fr.main.main.test).toStrictEqual('Ceci est un test!')
       }
 
-      it('should generate the structure', () => {
-        const res = loader.call(thisScope, resolvedVirtualModuleId)
-        const resStore = eval(res)
+      it('should generate the structure', async () => {
+        const load = factory({ paths: [appLocalesDir], namespaceResolution: 'basename' }).load
+        const res = (load as any).call(thisScope, resolvedVirtualModuleId)
+        const resStore = await import(esm(res))
         assertCommon(resStore)
       })
     })
-  })
+  }
 })
