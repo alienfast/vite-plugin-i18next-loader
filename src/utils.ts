@@ -8,6 +8,10 @@ import yaml from 'js-yaml'
 export const virtualModuleId = 'virtual:i18next-loader'
 export const resolvedVirtualModuleId = '\0' + virtualModuleId
 
+export function jsNormalizedLang(lang: string) {
+  return lang.replace(/-/, '_')
+}
+
 export function enumerateLangs(dir: string) {
   return fs.readdirSync(dir).filter(function (file) {
     return fs.statSync(path.join(dir, file)).isDirectory()

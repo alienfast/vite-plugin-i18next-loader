@@ -8,6 +8,7 @@ import {
   assertExistence,
   enumerateLangs,
   findAll,
+  jsNormalizedLang,
   loadAndParse,
   resolvedVirtualModuleId,
   resolvePaths,
@@ -112,14 +113,27 @@ const factory = (options: Options) => {
           }
         }
       })
+
+      // one bundle - works, no issues with dashes in names
+      // const bundle = `export default ${JSON.stringify(appResBundle)}`
+
+      // named exports, requires manipulation of names
       let namedBundle = ''
       for (const lang of allLangs) {
-        namedBundle += `export ${lang} = ${JSON.stringify(appResBundle[lang])}\n`
+        namedBundle += `export const ${jsNormalizedLang(lang)} = ${JSON.stringify(
+          appResBundle[lang],
+        )}\n`
       }
-      const defaultExport = `export default { ${[...allLangs].join(', ')} }\n`
+      let defaultExport = 'const resources = { \n'
+      for (const lang of allLangs) {
+        defaultExport += `"${lang}": ${jsNormalizedLang(lang)},\n`
+      }
+      defaultExport += '}'
+      defaultExport += '\nexport default resources\n'
 
-      // const bundle = `export default ${JSON.stringify(appResBundle)}`
       const bundle = namedBundle + defaultExport
+
+      // finally, print out the results
       debug('Final locales bundle: \n' + bundle)
       debug('loadedFiles', loadedFiles)
       return bundle
