@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable no-eval */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import * as path from 'node:path'
 
@@ -7,7 +5,7 @@ import { merge } from 'lodash-es'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import factory, { Options, resolvedVirtualModuleId } from '../index'
-import { LoaderPlugin, ThisScope } from './types'
+import { esm, LoaderPlugin, ThisScope } from './util'
 
 describe('basic', () => {
   for (const type of ['yaml', 'json']) {
@@ -39,30 +37,30 @@ describe('basic', () => {
         expect(resStore.fr.main.test).toStrictEqual('Ceci est un test!')
       }
 
-      it('should generate the structure', () => {
+      it('should generate the structure', async () => {
         const load = newPlugin().load
         const res = (load as any).call(thisScope, resolvedVirtualModuleId) as string
-        const resStore = eval(res)
+        const resStore = await import(esm(res))
         assertCommon(resStore)
       })
 
       it('should process include', () => {
         const load = newPlugin({ include: ['**/*.json'] }).load
         thisScope.addWatchFile = function (path) {
-          assert.notInclude(path, 'main.nonjson')
+          expect(path).not.toMatch(/main\.nonjson/)
         }
 
         const res = (load as any).call(thisScope, resolvedVirtualModuleId)
       })
 
-      it('should not process files that are excluded', () => {
+      it('should not process files that are excluded', async () => {
         const load = newPlugin({ include: [`**/*.${type}`, `!**/exclude.${type}`] }).load
         thisScope.addWatchFile = function (path) {
-          assert.notInclude(path, 'exclude.json')
+          expect(path).not.toMatch(/exclude\.json/)
         }
 
-        const res = (load as any).call(thisScope, resolvedVirtualModuleId)
-        const resStore = eval(res)
+        const res = (load as any).call(thisScope, resolvedVirtualModuleId) as string
+        const resStore = await import(esm(res))
         expect(resStore.de.main.foo).toStrictEqual(undefined)
         assertCommon(resStore)
       })

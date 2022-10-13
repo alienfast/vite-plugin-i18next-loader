@@ -23,3 +23,15 @@ export type LoaderPlugin = WithRequired<Plugin, 'load'>
 //     },
 //   ) => Promise<LoadResult> | LoadResult
 // >
+
+// export function esm(templateStrings: TemplateStringsArray, ...substitutions: string[]) {
+//   let js = templateStrings.raw[0]
+//   for (let i = 0; i < substitutions.length; i++) {
+//     js += substitutions[i] + templateStrings.raw[i + 1]
+//   }
+//   return 'data:text/javascript;base64,' + btoa(js)
+// }
+
+export function esm(js: string) {
+  return 'data:text/javascript;base64,' + btoa(js)
+}
