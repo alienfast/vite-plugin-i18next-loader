@@ -72,5 +72,11 @@
     "typescript": "^4.8.4",
     "vite": "^3.1.7",
     "vitest": "^0.24.1"
+  },
+  "author": "Kevin Ross <kevin.ross@alienfast.com>",
+  "auto": {
+    "plugins": [
+      "npm"
+    ]
   }
 }
