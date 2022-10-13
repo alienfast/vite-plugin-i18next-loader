@@ -4,7 +4,15 @@ import path from 'node:path'
 import { merge, set } from 'lodash-es'
 import { Plugin } from 'vite'
 
-import { assertExistence, enumerateLangs, findAll, loadAndParse, resolvePaths } from './utils'
+import {
+  assertExistence,
+  enumerateLangs,
+  findAll,
+  loadAndParse,
+  resolvedVirtualModuleId,
+  resolvePaths,
+  virtualModuleId,
+} from './utils'
 
 export interface Options {
   /**
@@ -35,9 +43,6 @@ export interface Options {
 
 // for fast match on hot reloading check?
 let loadedFiles: string[] = []
-
-const virtualModuleId = 'virtual:i18next-loader'
-export const resolvedVirtualModuleId = '\0' + virtualModuleId
 
 const factory = (options: Options) => {
   function debug(...args: any[]) {

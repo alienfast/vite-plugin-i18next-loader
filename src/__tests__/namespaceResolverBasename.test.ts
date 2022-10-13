@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable unicorn/prefer-module */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import * as path from 'node:path'
 
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import factory, { resolvedVirtualModuleId } from '..'
+import factory from '..'
+import { resolvedVirtualModuleId } from '../utils'
 import { esm, ThisScope } from './util'
 
 describe('namespaceResolverBasename', () => {

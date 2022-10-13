@@ -3,7 +3,8 @@ import * as path from 'node:path'
 
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import factory, { resolvedVirtualModuleId } from '../index'
+import factory from '../index'
+import { resolvedVirtualModuleId } from '../utils'
 import { esm, ThisScope } from './util'
 
 describe('basic', () => {

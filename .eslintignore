@@ -7,3 +7,7 @@ packages/*/dist
 .eslintrc.js
 .pnp*
 .yarn
+
+tsup.config.ts
+
+dist

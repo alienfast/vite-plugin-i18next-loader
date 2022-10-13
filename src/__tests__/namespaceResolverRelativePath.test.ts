@@ -4,7 +4,8 @@ import * as path from 'node:path'
 
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import factory, { resolvedVirtualModuleId } from '..'
+import factory from '..'
+import { resolvedVirtualModuleId } from '../utils'
 import { esm, ThisScope } from './util'
 
 describe('namespaceResolverRelativePath', () => {

@@ -14,7 +14,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup-node",
+    "build": "yarn clean && tsup-node",
     "build:ide": "echo 'tsc -b' && tsc -b",
     "clean": "echo 'cleaning' && tsc -b --clean && rm -rf packages/*/dist || true && rimraf .eslintcache || true",
     "clean:yarn": "rimraf yarn.lock node_modules .yarn/install-state.gz && yarn cache clean",

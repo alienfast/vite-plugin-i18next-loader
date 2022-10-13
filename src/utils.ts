@@ -4,6 +4,10 @@ import path from 'node:path'
 import globAll from 'glob-all'
 import yaml from 'js-yaml'
 
+// don't export these from index so the external types are cleaner
+export const virtualModuleId = 'virtual:i18next-loader'
+export const resolvedVirtualModuleId = '\0' + virtualModuleId
+
 export function enumerateLangs(dir: string) {
   return fs.readdirSync(dir).filter(function (file) {
     return fs.statSync(path.join(dir, file)).isDirectory()
