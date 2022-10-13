@@ -1,6 +1,7 @@
 *.log
 tmp
-./dist
+/dist
+/node_modules
 .eslintcache
 tsconfig.tsbuildinfo
 
@@ -16,7 +17,6 @@ tsconfig.tsbuildinfo
 !.yarn/versions
 
 
-node_modules
 
 # avoid workspace changed errors for native versions
 .yarn/cache/esbuild-*-64-*
