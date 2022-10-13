@@ -43,6 +43,7 @@ export interface Options {
 
 // for fast match on hot reloading check?
 let loadedFiles: string[] = []
+let allLangs: Set<string> = new Set()
 
 const factory = (options: Options) => {
   function debug(...args: any[]) {
@@ -75,6 +76,7 @@ const factory = (options: Options) => {
       localeDirs.forEach((nextLocaleDir) => {
         // all subdirectories match language codes
         const langs = enumerateLangs(nextLocaleDir)
+        allLangs = new Set([...allLangs, ...langs])
         for (const lang of langs) {
           const resBundle = {}
           resBundle[lang] = {}
@@ -110,7 +112,14 @@ const factory = (options: Options) => {
           }
         }
       })
-      const bundle = `export default ${JSON.stringify(appResBundle)}`
+      let namedBundle = ''
+      for (const lang of allLangs) {
+        namedBundle += `export ${lang} = ${JSON.stringify(appResBundle[lang])}\n`
+      }
+      const defaultExport = `export default { ${[...allLangs].join(', ')} }\n`
+
+      // const bundle = `export default ${JSON.stringify(appResBundle)}`
+      const bundle = namedBundle + defaultExport
       debug('Final locales bundle: \n' + bundle)
       debug('loadedFiles', loadedFiles)
       return bundle
@@ -121,17 +130,6 @@ const factory = (options: Options) => {
     // and emit a custom event with the updated messages
     //
     handleHotUpdate({ file, server }) {
-      // if (!file.includes(path) || file.split('.').pop() !== 'json') return
-      // const matched = file.match(/(.+\/)*(.+)\.(.+)\.json/i)
-      // if (matched && matched.length > 1) {
-      //   files = getFiles(path, 'json')
-      //   messages = files.reduce(getMessages, {})
-      //   server.ws.send({
-      //     type: 'custom',
-      //     event: 'locales-update',
-      //     data: messages,
-      //   })
-      // }
       debug('hot update', file)
       if (loadedFiles.includes(file)) {
         console.log('Triggering full reload based on changed file: ', file)
@@ -142,6 +140,12 @@ const factory = (options: Options) => {
           path: '*',
         })
       }
+      //   server.ws.send({
+      //     type: 'custom',
+      //     event: 'locales-update',
+      //     data: messages,
+      //   })
+      // }
       /* client side code
         // Only if you want hot module replacement when translation message file change
         if (import.meta.hot) {
