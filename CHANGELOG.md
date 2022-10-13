@@ -1,3 +1,15 @@
+# v1.0.0 (Thu Oct 13 2022)
+
+#### 💥 Breaking Change
+
+- 1.0.0 Release [#1](https://github.com/alienfast/vite-plugin-i18next-loader/pull/1) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v0.0.2 (Thu Oct 13 2022)
 
 #### ⚠️ Pushed to `main`
