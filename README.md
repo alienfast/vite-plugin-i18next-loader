@@ -27,9 +27,8 @@ See the [`test/data` directory](https://github.com/alienfast/vite-plugin-i18next
 ```
 └── app
     └── src
-    │  └── app.js
+    │  └── index.js
     └── locales
-       ├── index.js
        ├── de
        │   ├── foo.json
        │   └── bar.yaml
@@ -62,7 +61,7 @@ i18n.init({
 i18n.t('key')
 ```
 
-And you're done! The `index.js` can be empty, it's just needed to point the loader to the root directory of the locales.
+And you're done!
 
 ## `include` to filtering files read
 
@@ -102,14 +101,12 @@ This configures the loader to work on a file structure like the following:
     ├── src
     │  └── app.js
     ├── locales
-    │  ├── index.js
     │  └── en
     │      ├── foo.json
     │      └── bar.yaml
     └── node_modules
         └── lib1
             └── locales
-               ├── index.js
                └── en
                    ├── foo.json
                    └── bar.yaml
@@ -134,9 +131,8 @@ The following file structure would result in resources loaded as below:
 ```
 └── app
     ├── src
-    │  └── app.js
+    │  └── index.js
     └── locales
-       ├── index.js
        └── en
            ├── foo.json
            └── bar.yaml
