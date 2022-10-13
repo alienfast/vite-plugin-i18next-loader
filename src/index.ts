@@ -112,6 +112,7 @@ const factory = (options: Options) => {
       })
       const bundle = `export default ${JSON.stringify(appResBundle)}`
       debug('Final locales bundle: \n' + bundle)
+      debug('loadedFiles', loadedFiles)
       return bundle
     },
 
@@ -119,29 +120,39 @@ const factory = (options: Options) => {
     // Watch translation message files,
     // and emit a custom event with the updated messages
     //
-    // handleHotUpdate({ file, server }) {
-    // if (!file.includes(path) || file.split('.').pop() !== 'json') return
-    // const matched = file.match(/(.+\/)*(.+)\.(.+)\.json/i)
-    // if (matched && matched.length > 1) {
-    //   files = getFiles(path, 'json')
-    //   messages = files.reduce(getMessages, {})
-    //   server.ws.send({
-    //     type: 'custom',
-    //     event: 'locales-update',
-    //     data: messages,
-    //   })
-    /* client side code
+    handleHotUpdate({ file, server }) {
+      // if (!file.includes(path) || file.split('.').pop() !== 'json') return
+      // const matched = file.match(/(.+\/)*(.+)\.(.+)\.json/i)
+      // if (matched && matched.length > 1) {
+      //   files = getFiles(path, 'json')
+      //   messages = files.reduce(getMessages, {})
+      //   server.ws.send({
+      //     type: 'custom',
+      //     event: 'locales-update',
+      //     data: messages,
+      //   })
+      // }
+      debug('hot update', file)
+      if (loadedFiles.includes(file)) {
+        console.log('Triggering full reload based on changed file: ', file)
 
-          // Only if you want hot module replacement when translation message file change
-          if (import.meta.hot) {
-            import.meta.hot.on("locales-update", (data) => {
-              Object.keys(data).forEach((lang) => {
-                i18n.global.setLocaleMessage(lang, data[lang]);
-              });
+        // the simplest of hot updates - a full reload.
+        server.ws.send({
+          type: 'full-reload',
+          path: '*',
+        })
+      }
+      /* client side code
+        // Only if you want hot module replacement when translation message file change
+        if (import.meta.hot) {
+          import.meta.hot.on("locales-update", (data) => {
+            Object.keys(data).forEach((lang) => {
+              i18n.global.setLocaleMessage(lang, data[lang]);
             });
-          }
-        */
-    // },
+          });
+        }
+      */
+    },
   }
   return plugin
 }
