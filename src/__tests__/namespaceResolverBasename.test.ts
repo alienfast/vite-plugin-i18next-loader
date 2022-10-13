@@ -29,7 +29,7 @@ describe('namespaceResolverBasename', () => {
         expect(resStore.fr.main.main.test).toStrictEqual('Ceci est un test!')
       }
 
-      it('should generate the structure', async () => {
+      it.concurrent('should generate the structure', async () => {
         const load = factory({ paths: [appLocalesDir], namespaceResolution: 'basename' }).load
         const res = (load as any).call(thisScope, resolvedVirtualModuleId)
         const resStore = await import(esm(res))

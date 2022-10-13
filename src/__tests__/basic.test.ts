@@ -28,14 +28,14 @@ describe('basic', () => {
         expect(resStore.fr.main.test).toStrictEqual('Ceci est un test!')
       }
 
-      it('should generate the structure', async () => {
+      it.concurrent('should generate the structure', async () => {
         const load = factory({ paths: [appLocalesDir] }).load
         const res = (load as any).call(thisScope, resolvedVirtualModuleId) as string
         const resStore = await import(esm(res))
         assertCommon(resStore)
       })
 
-      it('should process include', () => {
+      it.concurrent('should process include', () => {
         const load = factory({ paths: [appLocalesDir], include: ['**/*.json'] }).load
         thisScope.addWatchFile = function (path) {
           expect(path).not.toMatch(/main\.nonjson/)
@@ -44,7 +44,7 @@ describe('basic', () => {
         const res = (load as any).call(thisScope, resolvedVirtualModuleId)
       })
 
-      it('should not process files that are excluded', async () => {
+      it.concurrent('should not process files that are excluded', async () => {
         const load = factory({
           paths: [appLocalesDir],
           include: [`**/*.${type}`, `!**/exclude.${type}`],

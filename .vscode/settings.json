@@ -6,7 +6,8 @@
   "eslint.nodePath": ".yarn/sdks",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "testing.automaticallyOpenPeekView": "never"
+  "testing.automaticallyOpenPeekView": "never",
+  "vitest.commandLine": "yarn test --"
   // "[typescript]": {
   //   "editor.defaultFormatter": "vscode.typescript-language-features"
   // }

@@ -21,7 +21,7 @@ describe('pathOverride', () => {
         }
       })
 
-      it('should load the app locales', async () => {
+      it.concurrent('should load the app locales', async () => {
         const load = factory({ paths: [appLocalesDir] }).load
         const res = (load as any).call(thisScope, resolvedVirtualModuleId) as string
         const resStore = (await import(esm(res))) as any
@@ -33,7 +33,7 @@ describe('pathOverride', () => {
         )
       })
 
-      it('should merge appLocales over any libraries', async () => {
+      it.concurrent('should merge appLocales over any libraries', async () => {
         const load = factory({
           paths: [path.join(appLocalesDir, '../node_modules/lib/locales'), appLocalesDir],
         }).load

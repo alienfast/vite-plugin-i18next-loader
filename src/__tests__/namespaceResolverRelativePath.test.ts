@@ -28,7 +28,7 @@ describe('namespaceResolverRelativePath', () => {
         expect(resStore.fr.main.main.main.test).toStrictEqual('Ceci est un test!')
       }
 
-      it('should generate the structure', async () => {
+      it.concurrent('should generate the structure', async () => {
         const load = factory({ paths: [appLocalesDir], namespaceResolution: 'relativePath' }).load
         const res = (load as any).call(thisScope, resolvedVirtualModuleId) as string
         const resStore = await import(esm(res))
