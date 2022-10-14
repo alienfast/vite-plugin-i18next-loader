@@ -4,7 +4,7 @@
 
 `yarn add -D vite-plugin-i18next-loader`
 
-Vite plugin to client bundle i18next locales composited from one to many json/yaml files _from_ one to many libraries.
+Vite plugin to client bundle i18next locales composited from one to many json/yaml files _from_ one to many libraries. Zero config HMR support included.
 
 This vite-plugin i18next loader generates the `resources` structure necessary for [i18next](https://github.com/i18next/i18next). The structure is made available as a [virtual module](https://vitejs.dev/guide/api-plugin.html#virtual-modules-convention) to the client bundle at build time, thus avoiding loading any language resources via extra HTTP requests.
 
