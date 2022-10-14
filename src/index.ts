@@ -1,6 +1,8 @@
 import path from 'node:path'
 
 import { merge, set } from 'lodash-es'
+import { marked } from 'marked'
+import * as TerminalRenderer from 'marked-terminal'
 import { createLogger, LogLevel, Plugin } from 'vite'
 
 import {
@@ -13,6 +15,11 @@ import {
   resolvePaths,
   virtualModuleId,
 } from './utils'
+
+marked.setOptions({
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  renderer: new TerminalRenderer(),
+})
 
 export interface Options {
   /**
@@ -120,9 +127,17 @@ const factory = (options: Options) => {
 
     const bundle = namedBundle + defaultExport
 
-    log.info(`Locales module '${resolvedVirtualModuleId}': \n${bundle}`, {
+    log.info(`Locales module '${resolvedVirtualModuleId}':`, {
       timestamp: true,
     })
+    // eslint-disable-next-line no-console
+    console.log(
+      marked(`
+\`\`\`ts
+${bundle}
+\`\`\`
+`),
+    )
     return bundle
   }
 
