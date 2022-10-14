@@ -303,6 +303,44 @@ Results in this object loaded:
 
 But it's just overwriting based on the return value of `glob-all`, so you shouldn't depend on it.
 
+## Output
+
+Note that the [virtual module](https://vitejs.dev/guide/api-plugin.html#virtual-modules-convention) generated has contents that conform to the [i18next resource format](https://www.i18next.com/misc/json-format).
+
+While using the output with `import resources from 'virtual:i18next-loader'` will not be tree-shaken, it is possible to use the named outputs with a dynamic `import` for tree shaking/chunking optimizations. If you take advantage of this, please see #4 and take a moment to update this doc with more information.
+
+**NOTE** as shown by the test output below, due to ES syntactical rules, we cannot use hyphenated lang codes. I'm open to ideas, but in the interim, affected lang codes are exported with the hyphen converted to underscore e.g. `zh-cn` has a named export of `zh_cn`. I noted that vite allows for tree-shaking of JSON files, perhaps that is worth looking at to consider how it might help us and inform our output?
+
+```ts
+export const en = {
+  foo: { test: 'app foo.test en' },
+  main: {
+    test: 'app test en',
+    sub: {
+      slug: 'app sub.slug en',
+      test: 'lib sub.test en',
+      subsub: { slugslug: 'app sub.subsub.slugsub en', test: 'lib sub.subsub.test en' },
+    },
+  },
+}
+export const zh_cn = {
+  foo: { test: 'app foo.test zh-cn' },
+  main: {
+    test: 'app test zh-cn',
+    sub: {
+      slug: 'app sub.slug zh-cn',
+      test: 'lib sub.test zh-cn',
+      subsub: { slugslug: 'app sub.subsub.slugsub zh-cn', test: 'lib sub.subsub.test zh-cn' },
+    },
+  },
+}
+const resources = {
+  en,
+  'zh-cn': zh_cn,
+}
+export default resources
+```
+
 ## Credit
 
 This was forked from [@alienfast/i18next-loader](https://github.com/alienfast/i18next-loader/), converted to be a vite plugin and improved. Thanks to the original authors and contributors.
