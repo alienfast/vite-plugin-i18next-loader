@@ -160,10 +160,10 @@ const factory = (options: Options) => {
 
         // const bundle = loadLocales()
         const { moduleGraph, ws } = server
-        const module = moduleGraph.getModuleById(virtualModuleId)
+        const module = moduleGraph.getModuleById(resolvedVirtualModuleId)
         debug('Found hot module?', module)
         if (module) {
-          debug('Invalidated ', virtualModuleId, ', now sending full reload')
+          debug('Invalidated ', resolvedVirtualModuleId, ', now sending full reload')
           moduleGraph.invalidateModule(module)
           if (ws) {
             ws.send({
