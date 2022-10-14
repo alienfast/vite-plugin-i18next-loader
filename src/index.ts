@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
 import path from 'node:path'
 
 import { merge, set } from 'lodash-es'
-import { Plugin } from 'vite'
+import { createLogger, LogLevel, Plugin } from 'vite'
 
 import {
   assertExistence,
@@ -17,9 +16,11 @@ import {
 
 export interface Options {
   /**
-   * Log debug information
+   * Set to 'info' for noisy information.
+   *
+   * Default: 'warn'
    */
-  debug?: boolean
+  logLevel?: LogLevel
 
   /**
    * Glob patterns to match files
@@ -47,12 +48,7 @@ let loadedFiles: string[] = []
 let allLangs: Set<string> = new Set()
 
 const factory = (options: Options) => {
-  function debug(...args: any[]) {
-    if (options.debug) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      console.log(...args)
-    }
-  }
+  const log = createLogger(options.logLevel || 'warn', { prefix: '[i18next-loader]' })
 
   function loadLocales() {
     const localeDirs = resolvePaths(options.paths, process.cwd())
@@ -61,7 +57,7 @@ const factory = (options: Options) => {
     //
     let appResBundle = {}
     loadedFiles = [] // reset
-    debug('Bundling locales (ordered least specific to most):')
+    log.info('Bundling locales (ordered least specific to most):')
     localeDirs.forEach((nextLocaleDir) => {
       // all subdirectories match language codes
       const langs = enumerateLangs(nextLocaleDir)
@@ -78,7 +74,7 @@ const factory = (options: Options) => {
 
         for (const langFile of langFiles) {
           loadedFiles.push(langFile) // track for fast hot reload matching
-          debug('\t' + langFile)
+          log.info('\t' + langFile)
 
           const content = loadAndParse(langFile)
 
@@ -120,9 +116,7 @@ const factory = (options: Options) => {
 
     const bundle = namedBundle + defaultExport
 
-    // finally, print out the results
-    debug('Final locales bundle: \n' + bundle)
-    debug('loadedFiles', loadedFiles)
+    log.info(`Final locales bundle: \n${bundle}`)
     return bundle
   }
 
@@ -146,24 +140,20 @@ const factory = (options: Options) => {
       return bundle
     },
 
-    //
-    // Watch translation message files,
-    // and emit a custom event with the updated messages
-    //
-    // @see https://github.com/vitejs/vite/issues/6871
-    // @see https://github.com/vitejs/vite/pull/10333 <- this is the one that would be easiest
-    //
+    /**
+     * Watch translation message files and trigger an update.
+     *
+     * @see https://github.com/vitejs/vite/issues/6871 <- as is implemented now, with a full reload
+     * @see https://github.com/vitejs/vite/pull/10333 <- this is the one that would be easiest and may not be a full reload
+     */
     handleHotUpdate({ file, server }) {
-      debug('hot update', file)
       if (loadedFiles.includes(file)) {
-        debug('Changed locale file: ', file)
+        log.info(`Changed locale file: ${file}`)
 
-        // const bundle = loadLocales()
         const { moduleGraph, ws } = server
         const module = moduleGraph.getModuleById(resolvedVirtualModuleId)
-        debug('Found hot module?', module)
         if (module) {
-          debug('Invalidated ', resolvedVirtualModuleId, ', now sending full reload')
+          log.info(`Invalidated ${resolvedVirtualModuleId}, now sending full reload`)
           moduleGraph.invalidateModule(module)
           if (ws) {
             ws.send({
@@ -172,24 +162,7 @@ const factory = (options: Options) => {
             })
           }
         }
-
-        // send custom event for custom listener to update the i18n resources and expire the cache.
-        // server.ws.send({
-        //   type: 'custom',
-        //   event: 'i18next-update',
-        //   data: bundle,
-        // })
       }
-      /* client side code
-        // Only if you want hot module replacement when translation message file change
-        if (import.meta.hot) {
-          import.meta.hot.on("locales-update", (data) => {
-            Object.keys(data).forEach((lang) => {
-              i18n.global.setLocaleMessage(lang, data[lang]);
-            });
-          });
-        }
-      */
     },
   }
   return plugin
