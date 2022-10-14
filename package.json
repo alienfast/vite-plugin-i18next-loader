@@ -26,7 +26,7 @@
     "lint": "eslint . --cache --ext .js,.ts,.tsx",
     "lint:fix": "eslint . --cache --ext .js,.ts,.tsx --fix",
     "test": "vitest",
-    "release": "yarn build && yarn auto shipit"
+    "release": "yarn test && yarn build && yarn auto shipit"
   },
   "keywords": [
     "vite-plugin",
