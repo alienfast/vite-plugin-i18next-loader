@@ -1,3 +1,15 @@
+# v2.0.0 (Fri Oct 14 2022)
+
+#### 💥 Breaking Change
+
+- Add basic hot module reloading (hmr) [#3](https://github.com/alienfast/vite-plugin-i18next-loader/pull/3) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v1.0.0 (Thu Oct 13 2022)
 
 #### 💥 Breaking Change
