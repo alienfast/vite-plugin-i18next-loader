@@ -156,15 +156,22 @@ const factory = (options: Options) => {
     handleHotUpdate({ file, server }) {
       debug('hot update', file)
       if (loadedFiles.includes(file)) {
-        console.log('Triggering full reload based on changed file: ', file)
+        debug('Changed locale file: ', file)
 
-        const bundle = loadLocales()
-
-        // the simplest of hot updates - a full reload, problem is it doesn't update i18n cache, or does it?
-        server.ws.send({
-          type: 'full-reload',
-          path: '*',
-        })
+        // const bundle = loadLocales()
+        const { moduleGraph, ws } = server
+        const module = moduleGraph.getModuleById(virtualModuleId)
+        debug('Found hot module?', module)
+        if (module) {
+          debug('Invalidated ', virtualModuleId, ', now sending full reload')
+          moduleGraph.invalidateModule(module)
+          if (ws) {
+            ws.send({
+              type: 'full-reload',
+              path: '*',
+            })
+          }
+        }
 
         // send custom event for custom listener to update the i18n resources and expire the cache.
         // server.ws.send({
