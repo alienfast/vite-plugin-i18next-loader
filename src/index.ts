@@ -120,7 +120,7 @@ const factory = (options: Options) => {
 
     const bundle = namedBundle + defaultExport
 
-    log.info(`Final locales bundle: \n${bundle}`, {
+    log.info(`Locales module '${resolvedVirtualModuleId}': \n${bundle}`, {
       timestamp: true,
     })
     return bundle
@@ -161,7 +161,7 @@ const factory = (options: Options) => {
         const { moduleGraph, ws } = server
         const module = moduleGraph.getModuleById(resolvedVirtualModuleId)
         if (module) {
-          log.info(`Invalidated ${resolvedVirtualModuleId}, now sending full reload`, {
+          log.info(`Invalidated module '${resolvedVirtualModuleId}' - sending full reload`, {
             timestamp: true,
           })
           moduleGraph.invalidateModule(module)
