@@ -2,7 +2,7 @@ import path from 'node:path'
 
 import { merge, set } from 'lodash-es'
 import { marked } from 'marked'
-import * as TerminalRenderer from 'marked-terminal'
+import TerminalRenderer from 'marked-terminal'
 import { createLogger, LogLevel, Plugin } from 'vite'
 
 import {
@@ -133,7 +133,7 @@ const factory = (options: Options) => {
     // eslint-disable-next-line no-console
     console.log(
       marked(`
-\`\`\`ts
+\`\`\`js
 ${bundle}
 \`\`\`
 `),
