@@ -1,24 +1,33 @@
-/* eslint-disable no-console */
 import path from 'node:path'
 
 import { merge, set } from 'lodash-es'
-import { Plugin } from 'vite'
+import { marked } from 'marked'
+import TerminalRenderer from 'marked-terminal'
+import { createLogger, LogLevel, Plugin } from 'vite'
 
 import {
   assertExistence,
   enumerateLangs,
   findAll,
+  jsNormalizedLang,
   loadAndParse,
   resolvedVirtualModuleId,
   resolvePaths,
   virtualModuleId,
 } from './utils'
 
+marked.setOptions({
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  renderer: new TerminalRenderer(),
+})
+
 export interface Options {
   /**
-   * Log debug information
+   * Set to 'info' for noisy information.
+   *
+   * Default: 'warn'
    */
-  debug?: boolean
+  logLevel?: LogLevel
 
   /**
    * Glob patterns to match files
@@ -43,13 +52,93 @@ export interface Options {
 
 // for fast match on hot reloading check?
 let loadedFiles: string[] = []
+let allLangs: Set<string> = new Set()
 
 const factory = (options: Options) => {
-  function debug(...args: any[]) {
-    if (options.debug) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      console.log(...args)
+  const log = createLogger(options.logLevel || 'warn', { prefix: '[i18next-loader]' })
+
+  function loadLocales() {
+    const localeDirs = resolvePaths(options.paths, process.cwd())
+    assertExistence(localeDirs)
+
+    //
+    let appResBundle = {}
+    loadedFiles = [] // reset
+    log.info('Bundling locales (ordered least specific to most):', {
+      timestamp: true,
+    })
+    localeDirs.forEach((nextLocaleDir) => {
+      // all subdirectories match language codes
+      const langs = enumerateLangs(nextLocaleDir)
+      allLangs = new Set([...allLangs, ...langs])
+      for (const lang of langs) {
+        const resBundle = {}
+        resBundle[lang] = {}
+
+        const langDir = path.join(nextLocaleDir, lang) // top level lang dir
+        const langFiles = findAll(
+          options.include || ['**/*.json', '**/*.yml', '**/*.yaml'],
+          langDir,
+        ) // all lang files matching patterns in langDir
+
+        for (const langFile of langFiles) {
+          loadedFiles.push(langFile) // track for fast hot reload matching
+          log.info('\t' + langFile, {
+            timestamp: true,
+          })
+
+          const content = loadAndParse(langFile)
+
+          if (options.namespaceResolution) {
+            let namespaceFilepath: string = langFile
+            if (options.namespaceResolution === 'relativePath') {
+              namespaceFilepath = path.relative(path.join(nextLocaleDir, lang), langFile)
+            } else if (options.namespaceResolution === 'basename') {
+              namespaceFilepath = path.basename(langFile)
+            }
+            const extname = path.extname(langFile)
+            const namespaceParts = namespaceFilepath.replace(extname, '').split(path.sep)
+            const namespace = [lang].concat(namespaceParts).join('.')
+            set(resBundle, namespace, content)
+          } else {
+            resBundle[lang] = content
+          }
+          appResBundle = merge(appResBundle, resBundle)
+        }
+      }
+    })
+
+    // one bundle - works, no issues with dashes in names
+    // const bundle = `export default ${JSON.stringify(appResBundle)}`
+
+    // named exports, requires manipulation of names
+    let namedBundle = ''
+    for (const lang of allLangs) {
+      namedBundle += `export const ${jsNormalizedLang(lang)} = ${JSON.stringify(
+        appResBundle[lang],
+      )}\n`
     }
+    let defaultExport = 'const resources = { \n'
+    for (const lang of allLangs) {
+      defaultExport += `"${lang}": ${jsNormalizedLang(lang)},\n`
+    }
+    defaultExport += '}'
+    defaultExport += '\nexport default resources\n'
+
+    const bundle = namedBundle + defaultExport
+
+    log.info(`Locales module '${resolvedVirtualModuleId}':`, {
+      timestamp: true,
+    })
+    // eslint-disable-next-line no-console
+    console.log(
+      marked(`
+\`\`\`js
+${bundle}
+\`\`\`
+`),
+    )
+    return bundle
   }
 
   const plugin: Plugin = {
@@ -65,83 +154,42 @@ const factory = (options: Options) => {
         return null
       }
 
-      const localeDirs = resolvePaths(options.paths, process.cwd())
-      assertExistence(localeDirs)
-
-      //
-      let appResBundle = {}
-      loadedFiles = [] // reset
-      debug('Bundling locales (ordered least specific to most):')
-      localeDirs.forEach((nextLocaleDir) => {
-        // all subdirectories match language codes
-        const langs = enumerateLangs(nextLocaleDir)
-        for (const lang of langs) {
-          const resBundle = {}
-          resBundle[lang] = {}
-
-          const langDir = path.join(nextLocaleDir, lang) // top level lang dir
-          const langFiles = findAll(
-            options.include || ['**/*.json', '**/*.yml', '**/*.yaml'],
-            langDir,
-          ) // all lang files matching patterns in langDir
-
-          for (const langFile of langFiles) {
-            this.addWatchFile(langFile)
-            loadedFiles.push(langFile) // track for fast hot reload matching
-            debug('\t' + langFile)
-
-            const content = loadAndParse(langFile)
-
-            if (options.namespaceResolution) {
-              let namespaceFilepath: string = langFile
-              if (options.namespaceResolution === 'relativePath') {
-                namespaceFilepath = path.relative(path.join(nextLocaleDir, lang), langFile)
-              } else if (options.namespaceResolution === 'basename') {
-                namespaceFilepath = path.basename(langFile)
-              }
-              const extname = path.extname(langFile)
-              const namespaceParts = namespaceFilepath.replace(extname, '').split(path.sep)
-              const namespace = [lang].concat(namespaceParts).join('.')
-              set(resBundle, namespace, content)
-            } else {
-              resBundle[lang] = content
-            }
-            appResBundle = merge(appResBundle, resBundle)
-          }
-        }
-      })
-      const bundle = `export default ${JSON.stringify(appResBundle)}`
-      debug('Final locales bundle: \n' + bundle)
+      const bundle = loadLocales()
+      for (const file of loadedFiles) {
+        this.addWatchFile(file)
+      }
       return bundle
     },
 
-    //
-    // Watch translation message files,
-    // and emit a custom event with the updated messages
-    //
-    // handleHotUpdate({ file, server }) {
-    // if (!file.includes(path) || file.split('.').pop() !== 'json') return
-    // const matched = file.match(/(.+\/)*(.+)\.(.+)\.json/i)
-    // if (matched && matched.length > 1) {
-    //   files = getFiles(path, 'json')
-    //   messages = files.reduce(getMessages, {})
-    //   server.ws.send({
-    //     type: 'custom',
-    //     event: 'locales-update',
-    //     data: messages,
-    //   })
-    /* client side code
+    /**
+     * Watch translation message files and trigger an update.
+     *
+     * @see https://github.com/vitejs/vite/issues/6871 <- as is implemented now, with a full reload
+     * @see https://github.com/vitejs/vite/pull/10333 <- TODO this is the one that would be easiest and may not be a full reload
+     */
+    handleHotUpdate({ file, server }) {
+      if (loadedFiles.includes(file)) {
+        log.info(`Changed locale file: ${file}`, {
+          timestamp: true,
+        })
 
-          // Only if you want hot module replacement when translation message file change
-          if (import.meta.hot) {
-            import.meta.hot.on("locales-update", (data) => {
-              Object.keys(data).forEach((lang) => {
-                i18n.global.setLocaleMessage(lang, data[lang]);
-              });
-            });
+        const { moduleGraph, ws } = server
+        const module = moduleGraph.getModuleById(resolvedVirtualModuleId)
+        if (module) {
+          log.info(`Invalidated module '${resolvedVirtualModuleId}' - sending full reload`, {
+            timestamp: true,
+          })
+          moduleGraph.invalidateModule(module)
+          // server.reloadModule(module) // TODO with vite 3.2 see https://github.com/vitejs/vite/pull/10333, may also be able to remove full reload
+          if (ws) {
+            ws.send({
+              type: 'full-reload',
+              path: '*',
+            })
           }
-        */
-    // },
+        }
+      }
+    },
   }
   return plugin
 }

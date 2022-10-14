@@ -19,5 +19,5 @@ tsconfig.tsbuildinfo
 
 
 # avoid workspace changed errors for native versions
-.yarn/cache/esbuild-*-64-*
+.yarn/cache/esbuild-*
 .yarn/cache/@swc-core-*

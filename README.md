@@ -13,6 +13,7 @@ This vite-plugin i18next loader generates the `resources` structure necessary fo
 - [x] glob based file filtering
 - [x] one to many overrides supporting reuse cases (white labeling)
 - [x] yaml and json support
+- [ ] hot module reloading (hmr) - work in progress see #2
 
 Given a locales directory, by default, the loader will find and parse any `json|yaml|yml` file and attribute the
 contents to the containing lang folder e.g. `en`. There is no need to add lang such as `en` or `de` inside your
@@ -48,6 +49,8 @@ export default defineConfig({
 })
 ```
 
+### app.ts
+
 ```typescript
 // File: app.ts
 import i18n from 'i18next'
@@ -61,9 +64,40 @@ i18n.init({
 i18n.t('key')
 ```
 
-And you're done!
+## Options
 
-## `include` to filtering files read
+```ts
+export interface Options {
+  /**
+   * Set to 'info' for noisy information.
+   *
+   * Default: 'warn'
+   */
+  logLevel?: LogLevel
+
+  /**
+   * Glob patterns to match files
+   *
+   * Default: ['**\/*.json', '**\/*.yml', '**\/*.yaml']
+   */
+  include?: string[]
+
+  /**
+   * Locale top level directory paths ordered from least specialized to most specialized
+   *  e.g. lib locale -> app locale
+   *
+   * Locales loaded later will overwrite any duplicated key via a deep merge strategy.
+   */
+  paths: string[]
+
+  /**
+   * Default: none
+   */
+  namespaceResolution?: 'basename' | 'relativePath'
+}
+```
+
+### `include` to filtering files read
 
 You can filter files in your file structure by specifying any glob supported by [`glob-all`](https://github.com/jpillora/node-glob-all). By default, any `json|yaml|yml` in the `paths` directories will be loaded.
 
@@ -83,7 +117,7 @@ You can filter files in your file structure by specifying any glob supported by 
 }
 ```
 
-## `paths` for overriding/white labeling
+### `paths` for overriding/white labeling
 
 Applications that reuse libraries e.g. white labeling, can utilize one to many sets of locale directories that
 the app will override.
@@ -114,11 +148,11 @@ This configures the loader to work on a file structure like the following:
 
 Everything from `./locales` will override anything specified in one to many libraries.
 
-## `namespaceResolution`
+### `namespaceResolution`
 
 Namespace resolution will impact the structure of the bundle. If you want the files' `basename` or relative path to be injected, look at the following options.
 
-### `namespaceResolution: 'basename'`
+#### `namespaceResolution: 'basename'`
 
 ```ts
 {
@@ -174,7 +208,7 @@ Results in this object loaded:
 }
 ```
 
-### `namespaceResolution: 'relativePath'`
+#### `namespaceResolution: 'relativePath'`
 
 ```ts
 {
