@@ -57,7 +57,9 @@ const factory = (options: Options) => {
     //
     let appResBundle = {}
     loadedFiles = [] // reset
-    log.info('Bundling locales (ordered least specific to most):')
+    log.info('Bundling locales (ordered least specific to most):', {
+      timestamp: true,
+    })
     localeDirs.forEach((nextLocaleDir) => {
       // all subdirectories match language codes
       const langs = enumerateLangs(nextLocaleDir)
@@ -74,7 +76,9 @@ const factory = (options: Options) => {
 
         for (const langFile of langFiles) {
           loadedFiles.push(langFile) // track for fast hot reload matching
-          log.info('\t' + langFile)
+          log.info('\t' + langFile, {
+            timestamp: true,
+          })
 
           const content = loadAndParse(langFile)
 
@@ -116,7 +120,9 @@ const factory = (options: Options) => {
 
     const bundle = namedBundle + defaultExport
 
-    log.info(`Final locales bundle: \n${bundle}`)
+    log.info(`Final locales bundle: \n${bundle}`, {
+      timestamp: true,
+    })
     return bundle
   }
 
@@ -144,17 +150,22 @@ const factory = (options: Options) => {
      * Watch translation message files and trigger an update.
      *
      * @see https://github.com/vitejs/vite/issues/6871 <- as is implemented now, with a full reload
-     * @see https://github.com/vitejs/vite/pull/10333 <- this is the one that would be easiest and may not be a full reload
+     * @see https://github.com/vitejs/vite/pull/10333 <- TODO this is the one that would be easiest and may not be a full reload
      */
     handleHotUpdate({ file, server }) {
       if (loadedFiles.includes(file)) {
-        log.info(`Changed locale file: ${file}`)
+        log.info(`Changed locale file: ${file}`, {
+          timestamp: true,
+        })
 
         const { moduleGraph, ws } = server
         const module = moduleGraph.getModuleById(resolvedVirtualModuleId)
         if (module) {
-          log.info(`Invalidated ${resolvedVirtualModuleId}, now sending full reload`)
+          log.info(`Invalidated ${resolvedVirtualModuleId}, now sending full reload`, {
+            timestamp: true,
+          })
           moduleGraph.invalidateModule(module)
+          // server.reloadModule(module) // TODO with vite 3.2 see https://github.com/vitejs/vite/pull/10333, may also be able to remove full reload
           if (ws) {
             ws.send({
               type: 'full-reload',
