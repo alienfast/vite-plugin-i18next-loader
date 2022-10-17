@@ -21,6 +21,14 @@ marked.setOptions({
   renderer: new TerminalRenderer(),
 })
 
+// unfortunately not exported
+export const LogLevels: Record<LogLevel, number> = {
+  silent: 0,
+  error: 1,
+  warn: 2,
+  info: 3,
+}
+
 export interface Options {
   /**
    * Set to 'info' for noisy information.
@@ -130,14 +138,18 @@ const factory = (options: Options) => {
     log.info(`Locales module '${resolvedVirtualModuleId}':`, {
       timestamp: true,
     })
-    // eslint-disable-next-line no-console
-    console.log(
-      marked(`
+
+    // emulate log.info for our marked terminal output
+    if (LogLevels[options.logLevel || 'warn'] >= LogLevels['info']) {
+      // eslint-disable-next-line no-console
+      console.log(
+        marked(`
 \`\`\`js
 ${bundle}
 \`\`\`
 `),
-    )
+      )
+    }
     return bundle
   }
 
