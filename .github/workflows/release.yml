@@ -6,24 +6,28 @@ jobs:
   release:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v3
 
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 16
+          cache: 'yarn'
 
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      - name: Create Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          yarn release
+      # allow the lock file to change (updating our own workspace versions in monorepo)
+      - run: yarn install --no-immutable
+      - run: yarn build
+      - run: yarn test
+
+      # commit back the lock file change if it works
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply yarn.lock changes
+
+      - run: yarn release
