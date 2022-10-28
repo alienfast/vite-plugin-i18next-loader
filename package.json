@@ -26,7 +26,7 @@
     "lint": "eslint . --cache --ext .js,.ts,.tsx",
     "lint:fix": "eslint . --cache --ext .js,.ts,.tsx --fix",
     "test": "vitest",
-    "release": "yarn test && yarn build && yarn auto shipit"
+    "release": "yarn auto shipit"
   },
   "keywords": [
     "vite-plugin",
@@ -42,11 +42,8 @@
       "url": "http://www.opensource.org/licenses/mit-license.php"
     }
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alienfast/i18next-loader"
-  },
-  "homepage": "https://github.com/alienfast/i18next-loader",
+  "repository": "https://github.com/alienfast/vite-plugin-i18next-loader",
+  "homepage": "https://github.com/alienfast/vite-plugin-i18next-loader",
   "maintainers": [
     {
       "name": "Kevin Ross",
@@ -64,27 +61,28 @@
     "marked-terminal": "^5.1.1"
   },
   "devDependencies": {
-    "@alienfast/eslint-config": "^4.0.3",
+    "@alienfast/eslint-config": "^4.0.5",
     "@types/js-yaml": "^4.0.5",
     "@types/lodash-es": "^4.17.6",
     "@types/marked": "^4",
-    "@types/node": "^18.8.5",
+    "@types/node": "^18.11.7",
     "@types/rimraf": "^3",
     "auto": "^10.37.6",
-    "eslint": "^8.25.0",
+    "eslint": "^8.26.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "rollup": "^3.1.0",
-    "tsup": "^6.2.3",
+    "rollup": "^3.2.3",
+    "tsup": "^6.3.0",
     "typescript": "^4.8.4",
-    "vite": "^3.1.8",
-    "vitest": "^0.24.1"
+    "vite": "^3.2.1",
+    "vitest": "^0.24.3"
   },
   "author": "Kevin Ross <kevin.ross@alienfast.com>",
   "auto": {
     "plugins": [
       "npm"
     ]
-  }
+  },
+  "packageManager": "yarn@3.2.4"
 }
