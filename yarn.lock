@@ -5,9 +5,9 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@alienfast/eslint-config@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "@alienfast/eslint-config@npm:4.0.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40alienfast%2Feslint-config%2F4.0.3%2F8ee8835831a987e1a8e84eacee44d87b1d29d682"
+"@alienfast/eslint-config@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "@alienfast/eslint-config@npm:4.0.5::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40alienfast%2Feslint-config%2F4.0.5%2F14ced26399c98f2ffd810b296dc194e1780835dc"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^5.39.0
     "@typescript-eslint/parser": ^5.39.0
@@ -25,7 +25,7 @@ __metadata:
     eslint-plugin-unused-imports: ^2.0.0
   peerDependencies:
     prettier: "*"
-  checksum: 0d19a6ee56ff7e82798e7ae1afacf8d555dd6c0175ae0655a13a1ccb6fa48dcc4373a162b6385dbcf518a80ba9e8ca0eecb25e1dfba122bf61ac4901635df816
+  checksum: 87d0b26d08c50d51826bef1e68b6162ea7df31e495d0fca63e6c301a111201a745e20378001beb9c89040e5b133bab9b3bbd08e49d2fd9326384084045020b35
   languageName: node
   linkType: hard
 
@@ -5518,11 +5518,11 @@ __metadata:
 
 "typescript@patch:typescript@^4.8.4#~builtin<compat/typescript>":
   version: 4.8.4
-  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=7ad353"
+  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 563a0ef47abae6df27a9a3ab38f75fc681f633ccf1a3502b1108e252e187787893de689220f4544aaf95a371a4eb3141e4a337deb9895de5ac3c1ca76430e5f0
+  checksum: 301459fc3eb3b1a38fe91bf96d98eb55da88a9cb17b4ef80b4d105d620f4d547ba776cc27b44cc2ef58b66eda23fe0a74142feb5e79a6fb99f54fc018a696afa
   languageName: node
   linkType: hard
 
@@ -5630,7 +5630,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vite-plugin-i18next-loader@workspace:."
   dependencies:
-    "@alienfast/eslint-config": ^4.0.3
+    "@alienfast/eslint-config": ^4.0.5
     "@types/js-yaml": ^4.0.5
     "@types/lodash-es": ^4.17.6
     "@types/marked": ^4
