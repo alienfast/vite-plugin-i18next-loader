@@ -1,3 +1,15 @@
+# v2.0.2 (Fri Oct 28 2022)
+
+#### 🐛 Bug Fix
+
+- Update build config [#7](https://github.com/alienfast/vite-plugin-i18next-loader/pull/7) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v2.0.1 (Mon Oct 17 2022)
 
 #### ⚠️ Pushed to `main`
