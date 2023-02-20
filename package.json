@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-i18next-loader",
+  "name": "vite-plugin-i18next-loader-cjs",
   "version": "2.0.3",
   "description": "Vite plugin loader for client embedded i18next locales composited from one to many json or yaml files.",
   "type": "module",
