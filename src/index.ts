@@ -1,6 +1,6 @@
 import path from 'node:path'
 
-import { merge, set } from 'lodash-es'
+import { merge, set } from 'lodash'
 import { marked } from 'marked'
 import TerminalRenderer from 'marked-terminal'
 import { createLogger, LogLevel, Plugin } from 'vite'
