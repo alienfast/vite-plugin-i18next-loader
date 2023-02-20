@@ -56,7 +56,7 @@
   "dependencies": {
     "glob-all": "^3.3.0",
     "js-yaml": "^4.1.0",
-    "lodash-es": "^4.17.21",
+    "lodash": "^4.17.21",
     "marked": "^4.1.1",
     "marked-terminal": "^5.1.1"
   },
