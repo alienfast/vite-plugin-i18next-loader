@@ -5130,9 +5130,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-i18next-loader@workspace:.":
+"vite-plugin-i18next-loader-cjs@workspace:.":
   version: 0.0.0-use.local
-  resolution: "vite-plugin-i18next-loader@workspace:."
+  resolution: "vite-plugin-i18next-loader-cjs@workspace:."
   dependencies:
     "@types/js-yaml": ^4.0.5
     "@types/lodash-es": ^4.17.6
