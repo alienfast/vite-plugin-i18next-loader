@@ -1,8 +1,9 @@
 import path from 'node:path'
 
-import { merge, set } from 'lodash'
+import { setProperty } from 'dot-prop'
 import { marked } from 'marked'
 import TerminalRenderer from 'marked-terminal'
+import merge from 'ts-deepmerge'
 import { createLogger, LogLevel, Plugin } from 'vite'
 
 import {
@@ -111,7 +112,7 @@ const factory = (options: Options) => {
             const extname = path.extname(langFile)
             const namespaceParts = namespaceFilepath.replace(extname, '').split(path.sep)
             const namespace = [lang].concat(namespaceParts).join('.')
-            set(resBundle, namespace, content)
+            setProperty(resBundle, namespace, content)
           } else {
             resBundle[lang] = content
           }

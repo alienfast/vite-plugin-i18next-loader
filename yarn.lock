@@ -835,13 +835,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.194":
-  version: 4.14.194
-  resolution: "@types/lodash@npm:4.14.194"
-  checksum: 113f34831c461469d91feca2dde737f88487732898b4d25e9eb23b087bb193985f864d1e1e0f3b777edc5022e460443588b6000a3b2348c966f72d17eedc35ea
-  languageName: node
-  linkType: hard
-
 "@types/marked@npm:^4":
   version: 4.0.8
   resolution: "@types/marked@npm:4.0.8"
@@ -2003,6 +1996,15 @@ __metadata:
   dependencies:
     esutils: ^2.0.2
   checksum: fd7673ca77fe26cd5cba38d816bc72d641f500f1f9b25b83e8ce28827fe2da7ad583a8da26ab6af85f834138cf8dae9f69b0cd6ab925f52ddab1754db44d99ce
+  languageName: node
+  linkType: hard
+
+"dot-prop@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "dot-prop@npm:8.0.0"
+  dependencies:
+    type-fest: ^3.8.0
+  checksum: 438a54cdbda061f9c8f8ed3e46e513f4d9929f39eab8e30852e4f22459c8c0fa5104472cf498a63f25f9d5a3b2890c1370a588fd2f73e0ee9523ca1a9446aec4
   languageName: node
   linkType: hard
 
@@ -5819,6 +5821,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-deepmerge@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "ts-deepmerge@npm:6.0.3"
+  checksum: 188120aac49a2d1bc0ef1a54365b01d0b720351cdd0e28cbb98dadcdd0cf8a65e0412154c66e08d87974471a24d559d384a1e49d7b4bcca7d22c826ffcf6690f
+  languageName: node
+  linkType: hard
+
 "ts-interface-checker@npm:^0.1.9":
   version: 0.1.13
   resolution: "ts-interface-checker@npm:0.1.13"
@@ -6023,6 +6032,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"type-fest@npm:^3.8.0":
+  version: 3.9.0
+  resolution: "type-fest@npm:3.9.0"
+  checksum: daec3f72db7af2b285ac10a27231675a18418dea073a5fe40d9720472072786b6e38263a41e1c91daf99d7ecda80d5cf914b5bb0dd308593fa33ad9d3ff410dc
+  languageName: node
+  linkType: hard
+
 "typed-array-length@npm:^1.0.4":
   version: 1.0.4
   resolution: "typed-array-length@npm:1.0.4"
@@ -6190,12 +6206,12 @@ __metadata:
   dependencies:
     "@alienfast/eslint-config": ^4.0.6
     "@types/js-yaml": ^4.0.5
-    "@types/lodash": ^4.14.194
     "@types/marked": ^4
     "@types/node": ^18.16.1
     "@types/rimraf": ^3
     "@typescript-eslint/eslint-plugin": ^5.59.1
     auto: ^10.46.0
+    dot-prop: ^8.0.0
     eslint: ^8.39.0
     eslint-config-prettier: ^8.8.0
     eslint-plugin-eslint-comments: ^3.2.0
@@ -6209,13 +6225,13 @@ __metadata:
     eslint-plugin-unused-imports: ^2.0.0
     glob-all: ^3.3.1
     js-yaml: ^4.1.0
-    lodash: ^4.17.21
     marked: ^4.3.0
     marked-terminal: ^5.1.1
     npm-run-all: ^4.1.5
     prettier: ^2.8.8
     rimraf: ^5.0.0
     rollup: ^3.21.0
+    ts-deepmerge: ^6.0.3
     tsup: ^6.7.0
     typescript: ^5.0.4
     vite: ^4.3.3
