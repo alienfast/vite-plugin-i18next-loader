@@ -58,6 +58,10 @@ export interface Options {
   namespaceResolution?: 'basename' | 'relativePath'
 }
 
+export interface ResBundle {
+  [key: string]: string | object
+}
+
 // for fast match on hot reloading check?
 let loadedFiles: string[] = []
 let allLangs: Set<string> = new Set()
@@ -70,7 +74,7 @@ const factory = (options: Options) => {
     assertExistence(localeDirs)
 
     //
-    let appResBundle = {}
+    let appResBundle: ResBundle = {}
     loadedFiles = [] // reset
     log.info('Bundling locales (ordered least specific to most):', {
       timestamp: true,
@@ -80,7 +84,7 @@ const factory = (options: Options) => {
       const langs = enumerateLangs(nextLocaleDir)
       allLangs = new Set([...allLangs, ...langs])
       for (const lang of langs) {
-        const resBundle = {}
+        const resBundle: ResBundle = {}
         resBundle[lang] = {}
 
         const langDir = path.join(nextLocaleDir, lang) // top level lang dir

@@ -45,7 +45,7 @@
     // Report errors on unused local variables.
     "noUnusedLocals": false,
     // obj[foo] suppression
-    "suppressImplicitAnyIndexErrors": true,
+    // "suppressImplicitAnyIndexErrors": true,  -- deprecated in 5.0
 
     // vite suggestions
     "useDefineForClassFields": true
