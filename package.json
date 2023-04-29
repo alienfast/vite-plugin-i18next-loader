@@ -6,14 +6,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
     }
   },
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.js",
-  "main": "./dist/index.cjs",
-  "main-module-types-note": "vscode was not recognizing types without the top level module and types entries, storybook/vite wouldn't load without the cjs exports entry",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
@@ -63,6 +58,10 @@
   },
   "devDependencies": {
     "@alienfast/eslint-config": "^4.0.6",
+    "@alienfast/tsconfig": "^1.0.1",
+    "@auto-it/all-contributors": "^10.46.0",
+    "@auto-it/first-time-contributor": "^10.46.0",
+    "@auto-it/released": "^10.46.0",
     "@types/js-yaml": "^4.0.5",
     "@types/marked": "^4",
     "@types/node": "^18.16.1",
@@ -92,7 +91,10 @@
   "author": "Kevin Ross <kevin.ross@alienfast.com>",
   "auto": {
     "plugins": [
-      "npm"
+      "npm",
+      "all-contributors",
+      "first-time-contributor",
+      "released"
     ]
   },
   "packageManager": "yarn@3.5.0"
