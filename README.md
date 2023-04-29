@@ -342,6 +342,34 @@ const resources = {
 export default resources
 ```
 
+## Vite typescript definitions
+
+In order for the vite [virtual module](https://vitejs.dev/guide/api-plugin.html#virtual-modules-convention) to be typechecked, you will need to a declaration. Below is an example of a common type file included in a project for vite:
+
+```ts
+// https://vitejs.dev/guide/api-hmr.html
+interface ViteHotContext {
+  readonly data: any
+
+  // accept(): void
+  accept(cb?: (mod: ModuleNamespace | undefined) => void): void
+  accept(dep: string, cb: (mod: ModuleNamespace | undefined) => void): void
+  accept(deps: readonly string[], cb: (mods: Array<ModuleNamespace | undefined>) => void): void
+
+  dispose(cb: (data: any) => void): void
+  decline(): void
+  invalidate(): void
+
+  // `InferCustomEventPayload` provides types for built-in Vite events
+  on<T extends string>(event: T, cb: (payload: InferCustomEventPayload<T>) => void): void
+  send<T extends string>(event: T, data?: InferCustomEventPayload<T>): void
+}
+
+// Allow for virtual module imports
+// https://vitejs.dev/guide/api-plugin.html#virtual-modules-convention
+declare module 'virtual:*'
+```
+
 ## Credit
 
 This was forked from [@alienfast/i18next-loader](https://github.com/alienfast/i18next-loader/), converted to be a vite plugin and improved. Thanks to the original authors and contributors.
