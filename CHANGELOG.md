@@ -1,3 +1,15 @@
+# v2.0.4 (Sun Apr 30 2023)
+
+#### 🐛 Bug Fix
+
+- Add back main workaround for moduleResolution: node [#11](https://github.com/alienfast/vite-plugin-i18next-loader/pull/11) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v2.0.3 (Sat Apr 29 2023)
 
 #### 🐛 Bug Fix
