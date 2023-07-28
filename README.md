@@ -1,6 +1,9 @@
-# vite-plugin-i18next-loader
+![MIT](https://img.shields.io/github/license/alienfast/vite-plugin-i18next-loader?style=for-the-badge)
+![Version](https://img.shields.io/github/package-json/v/alienfast/vite-plugin-i18next-loader?style=for-the-badge)
+![CI](https://img.shields.io/github/actions/workflow/status/alienfast/vite-plugin-i18next-loader/release.yml?style=for-the-badge)
+![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=for-the-badge)
 
-[![npm version](https://badge.fury.io/js/vite-plugin-i18next-loader.svg)](https://badge.fury.io/js/vite-plugin-i18next-loader)
+# vite-plugin-i18next-loader
 
 `yarn add -D vite-plugin-i18next-loader`
 
