@@ -1,4 +1,4 @@
-![MIT](https://img.shields.io/github/license/alienfast/vite-plugin-i18next-loader?style=for-the-badge)
+![MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Version](https://img.shields.io/github/package-json/v/alienfast/vite-plugin-i18next-loader?style=for-the-badge)
 ![CI](https://img.shields.io/github/actions/workflow/status/alienfast/vite-plugin-i18next-loader/release.yml?style=for-the-badge)
 ![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=for-the-badge)
