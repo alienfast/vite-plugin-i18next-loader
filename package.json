@@ -33,12 +33,7 @@
     "yaml",
     "json"
   ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/mit-license.php"
-    }
-  ],
+  "license": "MIT",
   "repository": "https://github.com/alienfast/vite-plugin-i18next-loader",
   "homepage": "https://github.com/alienfast/vite-plugin-i18next-loader",
   "maintainers": [
