@@ -1,0 +1,32 @@
+name: Setup
+description: setup to run any scripts
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Use nodejs
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: restore node modules cache
+      uses: actions/cache@v4
+      id: node_modules
+      with:
+        path: |
+          node_modules
+          packages/*/node_modules
+        key: node-modules-${{ runner.os }}-${{ hashFiles('yarn.lock', 'patches/*.patch') }}
+        restore-keys: |
+          node-modules-${{ runner.os }}-
+
+    # - run: yarn install --frozen-lockfile --network-timeout 9000000
+    # allow the lock file to change (updating our own workspace versions in monorepo)
+    - run: yarn install --no-immutable
+      if: steps.node_modules.outputs.cache-hit != 'true'
+      shell: bash
+    # commit back the lock file change if it works
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      if: steps.node_modules.outputs.cache-hit != 'true'
+      with:
+        commit_message: Apply yarn.lock changes
