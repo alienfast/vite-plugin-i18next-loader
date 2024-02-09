@@ -1,3 +1,15 @@
+# v2.0.7 (Fri Feb 09 2024)
+
+#### ⚠️ Pushed to `main`
+
+- use either available github token ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v2.0.6 (Fri Feb 09 2024)
 
 #### 🐛 Bug Fix
