@@ -26,10 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
-      - run: git checkout HEAD^
-      # - name: Prepare repository
-      #   run: git fetch --unshallow --tags
+          fetch-depth: 0
       - run: ls -la ./.github
       - run: ls -la ./.github/actions
 
@@ -40,6 +37,8 @@ jobs:
     needs: install
     steps:
       - uses: actions/checkout@v4
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/build-cache
       - run: yarn build
