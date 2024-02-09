@@ -25,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
       - run: ls -la ./.github
       - run: ls -la ./.github/actions
 
@@ -35,8 +37,6 @@ jobs:
     needs: install
     steps:
       - uses: actions/checkout@v4
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/build-cache
       - run: yarn build
