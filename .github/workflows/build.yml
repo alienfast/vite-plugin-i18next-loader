@@ -25,6 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: ls -la ./.github
+      - run: ls -la ./.github/actions
+
       - uses: ./.github/actions/setup
 
   build:
