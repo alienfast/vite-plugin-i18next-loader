@@ -58,7 +58,7 @@ jobs:
         env:
           PR: ${{ steps.PR.outputs.number }}
     env:
-      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_TOKEN}}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   # lint:
@@ -107,7 +107,7 @@ jobs:
       - name: Create Release
         run: yarn auto shipit -vv
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN  }}
           PROTECTED_BRANCH_REVIEWER_TOKEN: ${{ secrets.GH_TOKEN }}
           PR: ${{ steps.PR.outputs.number }}
