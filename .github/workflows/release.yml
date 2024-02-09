@@ -1,6 +1,11 @@
 name: Release
 
-on: [push]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, edited, reopened, review_requested]
+    branches: [main]
 
 jobs:
   release:
@@ -17,7 +22,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'yarn'
 
       # allow the lock file to change (updating our own workspace versions in monorepo)
