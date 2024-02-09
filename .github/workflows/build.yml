@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   build:
@@ -42,7 +42,7 @@ jobs:
       - run: yarn build
       # - run: yarn build && yarn lerna run bundle --scope=auto
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   pr-check:
@@ -58,7 +58,7 @@ jobs:
         env:
           PR: ${{ steps.PR.outputs.number }}
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   # lint:
@@ -82,11 +82,11 @@ jobs:
       - run: yarn test
       # - run: yarn test:coverage
       #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_TOKEN }}
       # - name: Send CodeCov Results
       #   run: bash <(curl -s https://codecov.io/bash) -t $CODECOV_KEY
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   release:
@@ -107,7 +107,7 @@ jobs:
       - name: Create Release
         run: yarn auto shipit -vv
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN  }}
           PROTECTED_BRANCH_REVIEWER_TOKEN: ${{ secrets.GH_TOKEN }}
           PR: ${{ steps.PR.outputs.number }}
