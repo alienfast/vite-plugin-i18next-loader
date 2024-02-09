@@ -1,6 +1,10 @@
 name: Release
 
-on: [push]
+on:
+  push:
+    branches: [main, next]
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   release:
@@ -10,14 +14,14 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
           cache: 'yarn'
 
       # allow the lock file to change (updating our own workspace versions in monorepo)
@@ -26,7 +30,7 @@ jobs:
       - run: yarn test
 
       # commit back the lock file change if it works
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Apply yarn.lock changes
 
