@@ -1,3 +1,20 @@
+# v2.0.6 (Fri Feb 09 2024)
+
+#### 🐛 Bug Fix
+
+- switch to intuit auto repo inspired workflow/actions [#16](https://github.com/alienfast/vite-plugin-i18next-loader/pull/16) ([@rosskevin](https://github.com/rosskevin))
+
+#### ⚠️ Pushed to `main`
+
+- switch to just GH_TOKEN ([@rosskevin](https://github.com/rosskevin))
+- allow secrets.GITHUB_TOKEN or secrets.GH_TOKEN ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v2.0.5 (Fri Feb 09 2024)
 
 #### 🐛 Bug Fix
