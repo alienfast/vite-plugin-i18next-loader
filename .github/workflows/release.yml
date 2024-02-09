@@ -2,10 +2,16 @@ name: Release
 
 on:
   push:
-    branches: [main]
+    branches: [main, next]
   pull_request:
-    types: [opened, reopened, review_requested]
-    branches: [main]
+    types: [opened, synchronize, reopened]
+
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     types: [opened, edited, reopened, review_requested]
+#     branches: [main]
 
 jobs:
   release:
