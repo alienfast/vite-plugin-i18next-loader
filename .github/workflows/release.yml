@@ -6,13 +6,6 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-# on:
-#   push:
-#     branches: [main]
-#   pull_request:
-#     types: [opened, edited, reopened, review_requested]
-#     branches: [main]
-
 jobs:
   release:
     runs-on: ubuntu-latest
