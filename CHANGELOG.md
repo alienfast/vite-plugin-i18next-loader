@@ -1,3 +1,18 @@
+# v2.0.8 (Sat Feb 10 2024)
+
+#### ⚠️ Pushed to `main`
+
+- revert wf conditional ([@rosskevin](https://github.com/rosskevin))
+- move env to global ([@rosskevin](https://github.com/rosskevin))
+- convert conditional to expression ([@rosskevin](https://github.com/rosskevin))
+- simplify and omit release when GITHUB_TOKEN not present ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v2.0.7 (Fri Feb 09 2024)
 
 #### ⚠️ Pushed to `main`
