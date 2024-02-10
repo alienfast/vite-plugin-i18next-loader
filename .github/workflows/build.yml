@@ -114,6 +114,8 @@ jobs:
         run: git fetch --unshallow --tags
       - name: Create Release
         run: yarn auto shipit -vv
+        if: ${{ env.GITHUB_TOKEN != '' }}
+
         # env:
         #   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         #   NPM_TOKEN: ${{ secrets.NPM_TOKEN  }}
