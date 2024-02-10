@@ -1,3 +1,19 @@
+# v2.0.10 (Sat Feb 10 2024)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Martin Lui ([@martian111](https://github.com/martian111)), for all your work!
+
+#### 🐛 Bug Fix
+
+- Support language tags with more than one hyphen [#14](https://github.com/alienfast/vite-plugin-i18next-loader/pull/14) ([@martian111](https://github.com/martian111))
+
+#### Authors: 1
+
+- Martin Lui ([@martian111](https://github.com/martian111))
+
+---
+
 # v2.0.9 (Sat Feb 10 2024)
 
 #### ⚠️ Pushed to `main`
