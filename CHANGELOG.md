@@ -1,3 +1,15 @@
+# v2.0.12 (Wed Feb 14 2024)
+
+#### 🐛 Bug Fix
+
+- Update deps, yarn, fix security advisory [#17](https://github.com/alienfast/vite-plugin-i18next-loader/pull/17) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v2.0.11 (Sat Feb 10 2024)
 
 #### ⚠️ Pushed to `main`
