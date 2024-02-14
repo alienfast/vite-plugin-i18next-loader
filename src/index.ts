@@ -3,7 +3,7 @@ import path from 'node:path'
 import { setProperty } from 'dot-prop'
 import { marked } from 'marked'
 import TerminalRenderer from 'marked-terminal'
-import merge from 'ts-deepmerge'
+import { merge } from 'ts-deepmerge'
 import { createLogger, LogLevel, Plugin } from 'vite'
 
 import {
