@@ -1,4 +1,4 @@
-import path from 'node:path'
+import * as path from 'node:path'
 
 import { setProperty } from 'dot-prop'
 import { marked } from 'marked'
@@ -18,7 +18,7 @@ import {
 } from './utils'
 
 marked.setOptions({
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
   renderer: new TerminalRenderer(),
 })
 

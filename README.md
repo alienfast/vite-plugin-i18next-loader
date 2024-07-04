@@ -109,7 +109,7 @@ You can filter files in your file structure by specifying any glob supported by 
 
 ```ts
 {
-  include: ['**/*.json']
+  ;['**/*.json']
 }
 ```
 
@@ -117,7 +117,7 @@ You can filter files in your file structure by specifying any glob supported by 
 
 ```ts
 {
-  include: ['**/*.json', '!**/excludeThis.json']
+  ;['**/*.json', '!**/excludeThis.json']
 }
 ```
 
@@ -128,7 +128,7 @@ the app will override.
 
 ```ts
 {
-  paths: ['../node_modules/lib1/locales', './locales'] // from least to most specialized
+  ;['../node_modules/lib1/locales', './locales'] // from least to most specialized
 }
 ```
 
@@ -160,7 +160,7 @@ Namespace resolution will impact the structure of the bundle. If you want the fi
 
 ```ts
 {
-  namespaceResolution: 'basename'
+  ;('basename')
 }
 ```
 
@@ -216,7 +216,7 @@ Results in this object loaded:
 
 ```ts
 {
-  namespaceResolution: 'relativePath'
+  ;('relativePath')
 }
 ```
 
