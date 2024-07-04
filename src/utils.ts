@@ -1,8 +1,8 @@
-import fs from 'node:fs'
-import path from 'node:path'
+import * as fs from 'node:fs'
+import * as path from 'node:path'
 
 import globAll from 'glob-all'
-import yaml from 'js-yaml'
+import * as yaml from 'js-yaml'
 
 // don't export these from index so the external types are cleaner
 export const virtualModuleId = 'virtual:i18next-loader'
@@ -21,7 +21,7 @@ export function enumerateLangs(dir: string) {
 //https://github.com/jpillora/node-glob-all#usage
 export function findAll(globs: string | string[], cwd: string): string[] {
   const globArray = Array.isArray(globs) ? globs : [globs]
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
   return globAll.sync(globArray, { cwd, realpath: true }) as string[]
 }
 
@@ -50,7 +50,7 @@ export function loadAndParse(langFile: string) {
   if (extname === '.yaml' || extname === '.yml') {
     parsedContent = yaml.load(fileContent) as string
   } else {
-    parsedContent = JSON.parse(fileContent)
+    parsedContent = JSON.parse(fileContent) as string
   }
   return parsedContent
 }
