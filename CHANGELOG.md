@@ -1,3 +1,15 @@
+# v2.0.13 (Thu Jul 04 2024)
+
+#### 🐛 Bug Fix
+
+- update deps, eslint 9x, yarn [#20](https://github.com/alienfast/vite-plugin-i18next-loader/pull/20) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v2.0.12 (Wed Feb 14 2024)
 
 #### 🐛 Bug Fix
