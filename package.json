@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-i18next-loader",
-  "version": "2.0.12",
+  "version": "2.0.13",
   "description": "Vite plugin loader for client embedded i18next locales composited from one to many json or yaml files.",
   "type": "module",
   "main-note": "Though this is ESM only, the following main is to appease tsc and varieties of moduleResolution e.g. node vs nodenext, otherwise types aren't found. see https://github.com/rosskevin/ts-esm-workspaces/tree/bug-main-required-to-build#workaround ",
