@@ -228,8 +228,8 @@ The following file structure would result in resources loaded as below:
        ├── index.js
        └── en
            ├── green.yaml
-           ├── blue
-           ├──── foo.yaml
+           └──  blue
+                └──  foo.yaml
 ```
 
 green.yaml
@@ -275,8 +275,8 @@ Results in this object loaded:
        ├── index.js
        └── en
            ├── blue.yaml
-           ├── blue
-           ├──── foo.yaml
+           └──  blue
+                └──  foo.yaml
 ```
 
 blue.yaml
