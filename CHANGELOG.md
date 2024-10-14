@@ -1,3 +1,19 @@
+# v2.0.14 (Mon Oct 14 2024)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, null[@martinweber-teamecho](https://github.com/martinweber-teamecho), for all your work!
+
+#### 🐛 Bug Fix
+
+- Update README.md [#22](https://github.com/alienfast/vite-plugin-i18next-loader/pull/22) ([@martinweber-teamecho](https://github.com/martinweber-teamecho))
+
+#### Authors: 1
+
+- [@martinweber-teamecho](https://github.com/martinweber-teamecho)
+
+---
+
 # v2.0.13 (Thu Jul 04 2024)
 
 #### 🐛 Bug Fix
