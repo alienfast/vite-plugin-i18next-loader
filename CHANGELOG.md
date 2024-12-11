@@ -1,3 +1,15 @@
+# v3.0.0 (Wed Dec 11 2024)
+
+#### 💥 Breaking Change
+
+- Change out glob-all -> glob, breaking change to exclusion/ignore behavior [#24](https://github.com/alienfast/vite-plugin-i18next-loader/pull/24) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v2.0.14 (Mon Oct 14 2024)
 
 :tada: This release contains work from a new contributor! :tada:
