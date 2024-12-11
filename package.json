@@ -54,7 +54,7 @@
     "ts-deepmerge": "^7.0.2"
   },
   "devDependencies": {
-    "@alienfast/eslint-config": "^5.1.17",
+    "@alienfast/eslint-config": "^5.1.18",
     "@alienfast/prettier-config": "^1.0.0",
     "@alienfast/tsconfig": "^1.0.1",
     "@auto-it/all-contributors": "^11.3.0",

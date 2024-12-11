@@ -5,9 +5,9 @@ __metadata:
   version: 8
   cacheKey: 10
 
-"@alienfast/eslint-config@npm:^5.1.17":
-  version: 5.1.17
-  resolution: "@alienfast/eslint-config@npm:5.1.17::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40alienfast%2Feslint-config%2F5.1.17%2F7f29648b9645ac440db763f8e8da3c39399aed67"
+"@alienfast/eslint-config@npm:^5.1.18":
+  version: 5.1.18
+  resolution: "@alienfast/eslint-config@npm:5.1.18::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40alienfast%2Feslint-config%2F5.1.18%2F8ed1bc4b223b38c2cf6d7b016c431a31dcec7c6c"
   dependencies:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.4.1"
     "@eslint/compat": "npm:^1.2.4"
@@ -32,7 +32,7 @@ __metadata:
   peerDependencies:
     eslint: "*"
     prettier: "*"
-  checksum: 10/2c7f97e905cc1c1562468556dc372dd26bba2e4b61cbc8f635d1d09402dbf14c046a6842dc28808c0700f5abfe15e8512a5944526a04569ba78273de534ee2b9
+  checksum: 10/6ab3e6f1709d912a57eaa954d31ad9a391024d489977704f1244b5b7f7fa513c58e627f5b0fac30c7d9611c91221e7bd7d1bb2ff144411bceb7d545c16dfc5b7
   languageName: node
   linkType: hard
 
@@ -7521,7 +7521,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vite-plugin-i18next-loader@workspace:."
   dependencies:
-    "@alienfast/eslint-config": "npm:^5.1.17"
+    "@alienfast/eslint-config": "npm:^5.1.18"
     "@alienfast/prettier-config": "npm:^1.0.0"
     "@alienfast/tsconfig": "npm:^1.0.1"
     "@auto-it/all-contributors": "npm:^11.3.0"
