@@ -49,7 +49,8 @@ describe('basic', () => {
       it.concurrent('should not process files that are excluded', async () => {
         const load = factory({
           paths: [appLocalesDir],
-          include: [`**/*.${type}`, `!**/exclude.${type}`],
+          include: [`**/*.${type}`],
+          ignore: [`**/exclude.${type}`],
         }).load
         thisScope.addWatchFile = function (path) {
           expect(path).not.toMatch(/exclude\.json/)

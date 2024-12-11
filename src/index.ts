@@ -1,6 +1,7 @@
 import * as path from 'node:path'
 
 import { setProperty } from 'dot-prop'
+import { IgnoreLike } from 'glob'
 import { marked } from 'marked'
 import TerminalRenderer from 'marked-terminal'
 import { merge } from 'ts-deepmerge'
@@ -44,6 +45,13 @@ export interface Options {
    * Default: ['**\/*.json', '**\/*.yml', '**\/*.yaml']
    */
   include?: string[]
+
+  /**
+   * Glob patterns to exclude/ignore
+   *
+   * @see https://github.com/isaacs/node-glob
+   */
+  ignore?: string | string[] | IgnoreLike
 
   /**
    * Locale top level directory paths ordered from least specialized to most specialized
@@ -92,6 +100,7 @@ const factory = (options: Options) => {
         const langFiles = findAll(
           options.include || ['**/*.json', '**/*.yml', '**/*.yaml'],
           langDir,
+          options.ignore,
         ) // all lang files matching patterns in langDir
 
         for (const langFile of langFiles) {

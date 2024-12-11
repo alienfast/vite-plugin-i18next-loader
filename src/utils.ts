@@ -1,7 +1,7 @@
 import * as fs from 'node:fs'
 import * as path from 'node:path'
 
-import globAll from 'glob-all'
+import { globSync, IgnoreLike } from 'glob'
 import * as yaml from 'js-yaml'
 
 // don't export these from index so the external types are cleaner
@@ -18,11 +18,27 @@ export function enumerateLangs(dir: string) {
   })
 }
 
-//https://github.com/jpillora/node-glob-all#usage
-export function findAll(globs: string | string[], cwd: string): string[] {
-  const globArray = Array.isArray(globs) ? globs : [globs]
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-  return globAll.sync(globArray, { cwd, realpath: true }) as string[]
+// https://github.com/isaacs/node-glob
+export function findAll(
+  pattern: string | string[],
+  cwd: string,
+  ignore?: string | string[] | IgnoreLike,
+): string[] {
+  // remove this exclusion check late, say 12/2025, but need to remind users of the change to glob and exclusions
+  if (typeof pattern === 'string' && pattern.includes('!')) {
+    throw new Error('Exclusions are not supported in pattern. Use the `ignore` option instead.')
+  }
+  // now throw error for arrays
+  if (Array.isArray(pattern)) {
+    for (const p of pattern) {
+      if (p.includes('!')) {
+        throw new Error('Exclusions are not supported in pattern. Use the `ignore` option instead.')
+      }
+    }
+  }
+
+  const result = globSync(pattern, { cwd, absolute: true, realpath: true, ignore })
+  return result
 }
 
 export function resolvePaths(paths: string[], cwd: string) {
