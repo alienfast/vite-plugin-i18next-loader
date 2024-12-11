@@ -87,6 +87,13 @@ export interface Options {
   include?: string[]
 
   /**
+   * Glob patterns to exclude/ignore
+   *
+   * @see https://github.com/isaacs/node-glob
+   */
+  ignore?: string | string[] | IgnoreLike
+
+  /**
    * Locale top level directory paths ordered from least specialized to most specialized
    *  e.g. lib locale -> app locale
    *
@@ -103,21 +110,22 @@ export interface Options {
 
 ### `include` to filtering files read
 
-You can filter files in your file structure by specifying any glob supported by [`glob-all`](https://github.com/jpillora/node-glob-all). By default, any `json|yaml|yml` in the `paths` directories will be loaded.
+You can filter files in your file structure by specifying any glob supported by [`glob`](https://github.com/isaacs/node-glob). By default, any `json|yaml|yml` in the `paths` directories will be loaded.
 
 #### Only json
 
 ```ts
-{
-  ;['**/*.json']
+const options = {
+  include: ['**/*.json'],
 }
 ```
 
 #### All json except one file
 
 ```ts
-{
-  ;['**/*.json', '!**/excludeThis.json']
+const options = {
+  include: ['**/*.json'],
+  ignore: ['**/excludeThis.json'],
 }
 ```
 
@@ -127,8 +135,8 @@ Applications that reuse libraries e.g. white labeling, can utilize one to many s
 the app will override.
 
 ```ts
-{
-  ;['../node_modules/lib1/locales', './locales'] // from least to most specialized
+const options = {
+  include: ['../node_modules/lib1/locales', './locales'], // from least to most specialized
 }
 ```
 
@@ -159,8 +167,8 @@ Namespace resolution will impact the structure of the bundle. If you want the fi
 #### `namespaceResolution: 'basename'`
 
 ```ts
-{
-  ;('basename')
+const options = {
+  namespaceResolution: 'basename',
 }
 ```
 
@@ -215,8 +223,8 @@ Results in this object loaded:
 #### `namespaceResolution: 'relativePath'`
 
 ```ts
-{
-  ;('relativePath')
+const options = {
+  namespaceResolution: 'relativePath',
 }
 ```
 
