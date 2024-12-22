@@ -23,7 +23,7 @@ Given a locales directory, by default, the loader will find and parse any `json|
 contents to the containing lang folder e.g. `en`. There is no need to add lang such as `en` or `de` inside your
 `json` or `yaml` files.
 
-See the [`test/data` directory](https://github.com/alienfast/vite-plugin-i18next-loader/tree/develop/test/data) for structure and example data.
+See the [`test/data` directory](https://github.com/alienfast/vite-plugin-i18next-loader/tree/main/src/__tests__/data) for structure and example data.
 
 ## Usage
 
