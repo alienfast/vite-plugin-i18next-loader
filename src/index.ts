@@ -1,4 +1,4 @@
-import * as path from 'node:path'
+import path from 'node:path'
 
 import { setProperty } from 'dot-prop'
 import { IgnoreLike } from 'glob'
@@ -16,7 +16,7 @@ import {
   resolvedVirtualModuleId,
   resolvePaths,
   virtualModuleId,
-} from './utils'
+} from './utils.js'
 
 marked.setOptions({
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
@@ -190,29 +190,22 @@ ${bundle}
     /**
      * Watch translation message files and trigger an update.
      *
-     * @see https://github.com/vitejs/vite/issues/6871 <- as is implemented now, with a full reload
      * @see https://github.com/vitejs/vite/pull/10333 <- TODO this is the one that would be easiest and may not be a full reload
      */
-    handleHotUpdate({ file, server }) {
-      if (loadedFiles.includes(file)) {
+    async handleHotUpdate({ file, server }) {
+      const isLocaleFile =
+        file.match(/\.(json|yml|yaml)$/) &&
+        options.paths.some((p) => file.startsWith(path.join(process.cwd(), p)))
+      if (isLocaleFile) {
         log.info(`Changed locale file: ${file}`, {
           timestamp: true,
         })
 
-        const { moduleGraph, ws } = server
+        const { moduleGraph } = server
+
         const module = moduleGraph.getModuleById(resolvedVirtualModuleId)
         if (module) {
-          log.info(`Invalidated module '${resolvedVirtualModuleId}' - sending full reload`, {
-            timestamp: true,
-          })
-          moduleGraph.invalidateModule(module)
-          // server.reloadModule(module) // TODO with vite 3.2 see https://github.com/vitejs/vite/pull/10333, may also be able to remove full reload
-          if (ws) {
-            ws.send({
-              type: 'full-reload',
-              path: '*',
-            })
-          }
+          await server.reloadModule(module)
         }
       }
     },

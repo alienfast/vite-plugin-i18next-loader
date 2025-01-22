@@ -5,9 +5,9 @@ import * as path from 'node:path'
 
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import factory from '../index'
-import { resolvedVirtualModuleId } from '../utils'
-import { esm, ThisScope } from './util'
+import factory from '../index.js'
+import { resolvedVirtualModuleId } from '../utils.js'
+import { esm, ThisScope } from './util.js'
 
 describe('basic', () => {
   for (const type of ['yaml', 'json']) {
