@@ -14,7 +14,7 @@ This vite-plugin i18next loader generates the `resources` structure necessary fo
 ## Features
 
 - [x] Glob based file filtering
-- [x] One to many overrides supporting reuse cases (white labeling)
+- [x] One to many overrides supporting reuse cases (locales in library packages/white labeling)
 - [x] Yaml and Json support
 - [x] HMR hot module reloading
 - [ ] Better chunking/tree shaking may already be possible, see https://github.com/alienfast/vite-plugin-i18next-loader/issues/4 - needs more trial/discussion.
