@@ -1,3 +1,15 @@
+# v3.1.0 (Wed Jan 22 2025)
+
+#### 🚀 Enhancement
+
+- Nodenext compatibility, better HMR [#26](https://github.com/alienfast/vite-plugin-i18next-loader/pull/26) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v3.0.0 (Wed Dec 11 2024)
 
 #### 💥 Breaking Change
