@@ -13,11 +13,11 @@ This vite-plugin i18next loader generates the `resources` structure necessary fo
 
 ## Features
 
-- [x] glob based file filtering
-- [x] one to many overrides supporting reuse cases (white labeling)
-- [x] yaml and json support
-- [x] hot module reloading (Basic with full reload works, HMR may be improved with vite 3.2 api - see #5)
-- [ ] chunking/tree shaking may already be possible, see #4 - needs more trial/discussion.
+- [x] Glob based file filtering
+- [x] One to many overrides supporting reuse cases (white labeling)
+- [x] Yaml and Json support
+- [x] HMR hot module reloading
+- [ ] Better chunking/tree shaking may already be possible, see https://github.com/alienfast/vite-plugin-i18next-loader/issues/4 - needs more trial/discussion.
 
 Given a locales directory, by default, the loader will find and parse any `json|yaml|yml` file and attribute the
 contents to the containing lang folder e.g. `en`. There is no need to add lang such as `en` or `de` inside your

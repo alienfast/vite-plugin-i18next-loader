@@ -5,6 +5,8 @@
   "include": ["src", "typings/**/*"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
     "outDir": "dist",
     "rootDir": "src"
   }
