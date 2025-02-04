@@ -1,3 +1,15 @@
+# v3.1.1 (Tue Feb 04 2025)
+
+#### ⚠️ Pushed to `main`
+
+- ncu ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v3.1.0 (Wed Jan 22 2025)
 
 #### 🚀 Enhancement
