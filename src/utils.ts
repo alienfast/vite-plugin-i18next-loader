@@ -60,13 +60,17 @@ export function assertExistence(paths: string[]) {
 }
 
 export function loadAndParse(langFile: string) {
-  const fileContent = String(fs.readFileSync(langFile))
-  const extname = path.extname(langFile)
-  let parsedContent: string
-  if (extname === '.yaml' || extname === '.yml') {
-    parsedContent = yaml.load(fileContent) as string
-  } else {
-    parsedContent = JSON.parse(fileContent) as string
+  const fileContent = String(fs.readFileSync(langFile));
+  const extname = path.extname(langFile);
+  let parsedContent: string;
+  try {
+    if (extname === ".yaml" || extname === ".yml") {
+      parsedContent = yaml.load(fileContent) as string;
+    } else {
+      parsedContent = JSON.parse(fileContent) as string;
+    }
+  } catch (e) {
+    throw new Error(`Failed to parse ${langFile} with length ${fileContent?.length??0}: ${e.message}`);
   }
-  return parsedContent
+  return parsedContent;
 }
