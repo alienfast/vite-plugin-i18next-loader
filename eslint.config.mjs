@@ -1,12 +1,9 @@
 import af from '@alienfast/eslint-config'
-import tseslint from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
 
 /**
  * Project eslint configuration.
  *
  * View config with `npx @eslint/config-inspector`
  */
-export default tseslint.config({
-  name: 'project',
-  extends: [...af.configs.recommended],
-})
+export default defineConfig([af.configs.recommended])
