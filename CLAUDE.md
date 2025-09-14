@@ -49,7 +49,6 @@ yarn test            # Run Vitest test suite
 
 ```bash
 yarn lint:fix        # Fix ESLint issues with caching
-npx @eslint/config-inspector  # View ESLint configuration
 ```
 
 ### Release
