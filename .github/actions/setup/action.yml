@@ -5,12 +5,12 @@ runs:
   using: 'composite'
   steps:
     - name: Use nodejs
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
-        node-version: 20
+        node-version: 22
 
     - name: restore node modules cache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       id: node_modules
       with:
         path: |
@@ -26,7 +26,7 @@ runs:
       if: steps.node_modules.outputs.cache-hit != 'true'
       shell: bash
     # commit back the lock file change if it works
-    - uses: stefanzweifel/git-auto-commit-action@v5
+    - uses: stefanzweifel/git-auto-commit-action@v6
       if: steps.node_modules.outputs.cache-hit != 'true'
       with:
         commit_message: Apply yarn.lock changes
