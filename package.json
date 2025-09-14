@@ -82,6 +82,9 @@
   },
   "author": "Kevin Ross <kevin.ross@alienfast.com>",
   "auto": {
+    "canary": {
+      "target": "comment"
+    },
     "plugins": [
       "npm",
       "all-contributors",
