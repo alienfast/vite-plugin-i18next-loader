@@ -22,6 +22,7 @@ This is `vite-plugin-i18next-loader`, a Vite plugin that generates client-bundle
 ### Virtual Module System
 
 The plugin creates a virtual Vite module at `virtual:i18next-loader` that:
+
 - Generates both default and named exports for each language
 - Handles language code normalization (converts hyphens to underscores for JS identifiers)
 - Provides deep-merged locale resources from multiple source directories
@@ -36,6 +37,7 @@ The plugin creates a virtual Vite module at `virtual:i18next-loader` that:
 ## Development Commands
 
 ### Build & Development
+
 ```bash
 yarn build           # Clean and build with tsup (ESM output)
 yarn build:ide       # TypeScript compilation for IDE support
@@ -44,12 +46,14 @@ yarn test            # Run Vitest test suite
 ```
 
 ### Code Quality
+
 ```bash
 yarn lint:fix        # Fix ESLint issues with caching
 npx @eslint/config-inspector  # View ESLint configuration
 ```
 
 ### Release
+
 ```bash
 yarn release         # Automated release with auto
 ```
@@ -65,6 +69,7 @@ yarn release         # Automated release with auto
   - Path override functionality (library + app locales)
 
 ### Running Specific Tests
+
 ```bash
 yarn test basic.test.ts                    # Single test file
 yarn test --reporter=verbose              # Detailed output
@@ -81,6 +86,7 @@ yarn test --watch                         # Watch mode
 ## File Structure Patterns
 
 ### Locale Directory Structure
+
 ```
 locales/
 ├── en/
@@ -92,6 +98,7 @@ locales/
 ```
 
 ### Output Pattern (with namespaceResolution: 'basename')
+
 ```javascript
 export const en = { common: {...}, feature: {...} }
 export const de = { common: {...}, feature: {...} }
