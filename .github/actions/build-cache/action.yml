@@ -1,15 +1,16 @@
 name: 'Build Cache'
-description: Cache build artifacts and dependencies
+description: build cache
 
 runs:
   using: 'composite'
   steps:
-    - name: Cache build artifacts
+    - name: build cache
       uses: actions/cache@v4
       with:
-        path: dist
-        key: build-${{ github.run_id }}-${{ github.sha }}
-        restore-keys: |
-          build-${{ github.run_id }}-
-          build-
-      continue-on-error: true
+        path: |
+          node_modules
+          dist
+          packages/*/node_modules
+          packages/*/dist
+        key: ${{ github.run_id }}
+        restore-keys: ${{ github.run_id }}
