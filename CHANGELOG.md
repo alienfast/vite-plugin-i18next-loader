@@ -1,3 +1,16 @@
+# v3.1.3 (Mon Sep 15 2025)
+
+#### 🐛 Bug Fix
+
+- chore: dependency updates and Node.js 20+ requirement [#31](https://github.com/alienfast/vite-plugin-i18next-loader/pull/31) ([@rosskevin](https://github.com/rosskevin))
+- chore: comprehensive dependency updates with Vite v7 upgrade [#30](https://github.com/alienfast/vite-plugin-i18next-loader/pull/30) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v3.1.2 (Fri Feb 07 2025)
 
 #### ⚠️ Pushed to `main`
