@@ -40,7 +40,7 @@ The plugin creates a virtual Vite module at `virtual:i18next-loader` that:
 
 ```bash
 yarn build           # Clean and build with tsup (ESM output)
-yarn build:ide       # TypeScript compilation for IDE support
+yarn typecheck       # TypeScript compilation for IDE support
 yarn clean           # Remove dist directory
 yarn test            # Run Vitest test suite
 ```

@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "yarn clean && tsup-node",
-    "build:ide": "echo 'tsc -b' && tsc -b",
+    "typecheck": "echo 'tsc -b' && tsc -b",
     "clean": "tsx ./scripts/clean.ts",
     "clean:yarn": "tsx ./scripts/clean-yarn.ts",
     "reset": "tsx ./scripts/reset.ts",
