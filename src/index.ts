@@ -109,7 +109,7 @@ const factory = (options: Options) => {
             timestamp: true,
           })
 
-          const content = loadAndParse(langFile)
+          const content = loadAndParse(langFile) ?? {}
 
           if (options.namespaceResolution) {
             let namespaceFilepath: string = langFile
