@@ -1,3 +1,15 @@
+# v4.0.1 (Wed Jun 03 2026)
+
+#### 🐛 Bug Fix
+
+- Token-free CI: public-npm deps, OIDC, built-in GITHUB_TOKEN, pnpm 11 [#35](https://github.com/alienfast/vite-plugin-i18next-loader/pull/35) ([@rosskevin](https://github.com/rosskevin))
+
+#### Authors: 1
+
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v4.0.0 (Wed Jun 03 2026)
 
 :tada: This release contains work from a new contributor! :tada:
