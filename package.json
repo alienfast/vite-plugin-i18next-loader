@@ -26,17 +26,17 @@
   },
   "description": "Vite plugin loader for client embedded i18next locales composited from one to many json or yaml files.",
   "devDependencies": {
-    "@alienfast/biome-config": "^1.0.5",
+    "@alienfast/biome-config": "^1.0.6",
     "@alienfast/tsconfig": "^1.0.8",
     "@auto-it/all-contributors": "^11.3.6",
     "@auto-it/first-time-contributor": "^11.3.6",
     "@auto-it/released": "^11.3.6",
-    "@biomejs/biome": "^2.4.9",
+    "@biomejs/biome": "^2.4.16",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^25.9.1",
     "auto": "^11.3.6",
     "execa": "^9.6.1",
-    "i18next": "^26.3.1",
+    "i18next": "26.3.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^6.1.3",
     "tsdown": "^0.22.1",
@@ -73,15 +73,9 @@
     }
   ],
   "name": "vite-plugin-i18next-loader",
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@11.5.1",
   "peerDependencies": {
     "vite": ">=3.1.6"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "esbuild"
-    ]
   },
   "publishConfig": {
     "access": "public"
