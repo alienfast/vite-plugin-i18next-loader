@@ -24,6 +24,8 @@ permissions:
   checks: write
   # To post comments on PRs
   issues: write
+  # OIDC token for npm Trusted Publishing (token-less publish + provenance)
+  id-token: write
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
