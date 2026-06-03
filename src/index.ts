@@ -1,11 +1,11 @@
 import path from 'node:path'
 
 import { setProperty } from 'dot-prop'
-import { IgnoreLike } from 'glob'
+import type { IgnoreLike } from 'glob'
 import { marked } from 'marked'
 import TerminalRenderer from 'marked-terminal'
 import { merge } from 'ts-deepmerge'
-import { createLogger, LogLevel, Plugin } from 'vite'
+import { createLogger, type LogLevel, type Plugin } from 'vite'
 
 import {
   assertExistence,
@@ -19,16 +19,15 @@ import {
 } from './utils.js'
 
 marked.setOptions({
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
   renderer: new TerminalRenderer(),
 })
 
 // unfortunately not exported
 export const LogLevels: Record<LogLevel, number> = {
-  silent: 0,
   error: 1,
-  warn: 2,
   info: 3,
+  silent: 0,
+  warn: 2,
 }
 
 export interface Options {
@@ -105,7 +104,7 @@ const factory = (options: Options) => {
 
         for (const langFile of langFiles) {
           loadedFiles.push(langFile) // track for fast hot reload matching
-          log.info('\t' + langFile, {
+          log.info(`\t${langFile}`, {
             timestamp: true,
           })
 
@@ -154,8 +153,7 @@ const factory = (options: Options) => {
     })
 
     // emulate log.info for our marked terminal output
-    if (LogLevels[options.logLevel || 'warn'] >= LogLevels['info']) {
-      // eslint-disable-next-line no-console
+    if (LogLevels[options.logLevel || 'warn'] >= LogLevels.info) {
       console.log(
         marked(`
 \`\`\`js
@@ -168,25 +166,6 @@ ${bundle}
   }
 
   const plugin: Plugin = {
-    name: 'vite-plugin-i18next-loader', // required, will show up in warnings and errors
-    resolveId(id) {
-      if (id === virtualModuleId) {
-        return resolvedVirtualModuleId
-      }
-      return null
-    },
-    load(id) {
-      if (id !== resolvedVirtualModuleId) {
-        return null
-      }
-
-      const bundle = loadLocales()
-      for (const file of loadedFiles) {
-        this.addWatchFile(file)
-      }
-      return bundle
-    },
-
     /**
      * Watch translation message files and trigger an update.
      *
@@ -210,6 +189,24 @@ ${bundle}
           await server.reloadModule(module)
         }
       }
+    },
+    load(id) {
+      if (id !== resolvedVirtualModuleId) {
+        return null
+      }
+
+      const bundle = loadLocales()
+      for (const file of loadedFiles) {
+        this.addWatchFile(file)
+      }
+      return bundle
+    },
+    name: 'vite-plugin-i18next-loader', // required, will show up in warnings and errors
+    resolveId(id) {
+      if (id === virtualModuleId) {
+        return resolvedVirtualModuleId
+      }
+      return null
     },
   }
   return plugin

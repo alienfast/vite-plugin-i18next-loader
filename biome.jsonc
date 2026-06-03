@@ -1,0 +1,23 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+  "extends": ["@alienfast/biome-config/base"],
+  "files": {
+    "includes": [
+      "**/*",
+      "!dist/**/*",
+      // locale fixtures, including intentionally malformed files - leave untouched
+      "!src/__tests__/data/**/*"
+    ]
+  },
+  "linter": {
+    "rules": {
+      "correctness": {
+        // ambient module declarations (typings/*.d.ts) and virtual:* are not resolvable
+        "noUnresolvedImports": "off",
+        // this is a published NodeNext ESM library: relative imports must keep their
+        // emitted .js specifiers - biome resolves to the .ts source and wants to rewrite them
+        "useImportExtensions": "off"
+      }
+    }
+  }
+}

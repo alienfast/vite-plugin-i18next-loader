@@ -1,17 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as path from 'node:path'
 
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import factory from '../index.js'
 import { resolvedVirtualModuleId } from '../utils.js'
-import { esm, ThisScope } from './util.js'
+import { esm, type ThisScope } from './util.js'
 
 describe('basic', () => {
   for (const type of ['yaml', 'json']) {
-    // eslint-disable-next-line unicorn/prefer-module
     const appLocalesDir = path.join(__dirname, `./data/basic-app-${type}/locales`)
     describe(type, () => {
       let thisScope: ThisScope
@@ -38,21 +34,22 @@ describe('basic', () => {
       })
 
       it.concurrent('should process include', () => {
-        const load = factory({ paths: [appLocalesDir], include: ['**/*.json'] }).load
-        thisScope.addWatchFile = function (path) {
+        const load = factory({ include: ['**/*.json'], paths: [appLocalesDir] }).load
+        thisScope.addWatchFile = (path) => {
           expect(path).not.toMatch(/main\.nonjson/)
         }
 
-        const res = (load as any).call(thisScope, resolvedVirtualModuleId)
+        // invoke load purely for its addWatchFile side effect
+        void (load as any).call(thisScope, resolvedVirtualModuleId)
       })
 
       it.concurrent('should not process files that are excluded', async () => {
         const load = factory({
-          paths: [appLocalesDir],
-          include: [`**/*.${type}`],
           ignore: [`**/exclude.${type}`],
+          include: [`**/*.${type}`],
+          paths: [appLocalesDir],
         }).load
-        thisScope.addWatchFile = function (path) {
+        thisScope.addWatchFile = (path) => {
           expect(path).not.toMatch(/exclude\.json/)
         }
 

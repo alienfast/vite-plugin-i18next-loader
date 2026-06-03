@@ -39,22 +39,23 @@ The plugin creates a virtual Vite module at `virtual:i18next-loader` that:
 ### Build & Development
 
 ```bash
-yarn build           # Clean and build with tsup (ESM output)
-yarn typecheck       # TypeScript compilation for IDE support
-yarn clean           # Remove dist directory
-yarn test            # Run Vitest test suite
+pnpm build           # Clean and build with tsup (ESM output)
+pnpm check-types     # TypeScript compilation for IDE support
+pnpm clean           # Remove dist directory
+pnpm test            # Run Vitest test suite
+pnpm check           # Run check-types, check-biome, and test in parallel
 ```
 
 ### Code Quality
 
 ```bash
-yarn lint:fix        # Fix ESLint issues with caching
+pnpm check-biome     # Lint and format with Biome (--write)
 ```
 
 ### Release
 
 ```bash
-yarn release         # Automated release with auto
+pnpm release         # Automated release with auto
 ```
 
 ## Testing
@@ -70,17 +71,17 @@ yarn release         # Automated release with auto
 ### Running Specific Tests
 
 ```bash
-yarn test basic.test.ts                    # Single test file
-yarn test --reporter=verbose              # Detailed output
-yarn test --watch                         # Watch mode
+pnpm test basic.test.ts                    # Single test file
+pnpm test --reporter=verbose              # Detailed output
+pnpm test --watch                         # Watch mode
 ```
 
 ## Build Configuration
 
 - **TypeScript**: Uses `@alienfast/tsconfig/nodenext.json` with ESM modules
 - **Bundler**: tsup with ESM output, sourcemaps, and minification
-- **ESLint**: `@alienfast/eslint-config` with TypeScript ESLint integration
-- **Package Manager**: Yarn 4.5.3
+- **Lint/Format**: Biome via `@alienfast/biome-config/base` (see `biome.jsonc`)
+- **Package Manager**: pnpm 10.33.0
 
 ## File Structure Patterns
 

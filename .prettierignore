@@ -1,6 +1,0 @@
-packages/*/dist
-./build
-*.snap
-tmp
-.storybook-out
-.yarn

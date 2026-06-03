@@ -1,21 +1,19 @@
 import * as fs from 'node:fs'
 import * as path from 'node:path'
 
-import { globSync, IgnoreLike } from 'glob'
+import { globSync, type IgnoreLike } from 'glob'
 import * as yaml from 'js-yaml'
 
 // don't export these from index so the external types are cleaner
 export const virtualModuleId = 'virtual:i18next-loader'
-export const resolvedVirtualModuleId = '\0' + virtualModuleId
+export const resolvedVirtualModuleId = `\0${virtualModuleId}`
 
 export function jsNormalizedLang(lang: string) {
   return lang.replace(/-/g, '_')
 }
 
 export function enumerateLangs(dir: string) {
-  return fs.readdirSync(dir).filter(function (file) {
-    return fs.statSync(path.join(dir, file)).isDirectory()
-  })
+  return fs.readdirSync(dir).filter((file) => fs.statSync(path.join(dir, file)).isDirectory())
 }
 
 // https://github.com/isaacs/node-glob
@@ -37,7 +35,7 @@ export function findAll(
     }
   }
 
-  const result = globSync(pattern, { cwd, absolute: true, realpath: true, ignore })
+  const result = globSync(pattern, { absolute: true, cwd, ignore, realpath: true })
   return result
 }
 

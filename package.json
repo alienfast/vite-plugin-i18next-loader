@@ -1,86 +1,4 @@
 {
-  "name": "vite-plugin-i18next-loader",
-  "version": "3.1.3",
-  "description": "Vite plugin loader for client embedded i18next locales composited from one to many json or yaml files.",
-  "type": "module",
-  "main-note": "Though this is ESM only, the following main is to appease tsc and varieties of moduleResolution e.g. node vs nodenext, otherwise types aren't found. see https://github.com/rosskevin/ts-esm-workspaces/tree/bug-main-required-to-build#workaround ",
-  "main": "./dist/index.js",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "sideEffects": false,
-  "engines": {
-    "node": ">=20"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "build": "yarn clean && tsup-node",
-    "typecheck": "echo 'tsc -b' && tsc -b",
-    "clean": "tsx ./scripts/clean.ts",
-    "clean:yarn": "tsx ./scripts/clean-yarn.ts",
-    "reset": "tsx ./scripts/reset.ts",
-    "lint:fix": "eslint . --cache --fix",
-    "test": "vitest",
-    "release": "yarn auto shipit"
-  },
-  "keywords": [
-    "vite-plugin",
-    "loader",
-    "i18next",
-    "locales",
-    "yaml",
-    "json"
-  ],
-  "license": "MIT",
-  "repository": "https://github.com/alienfast/vite-plugin-i18next-loader",
-  "homepage": "https://github.com/alienfast/vite-plugin-i18next-loader",
-  "maintainers": [
-    {
-      "name": "Kevin Ross",
-      "email": "kevin.ross@alienfast.com"
-    }
-  ],
-  "peerDependencies": {
-    "vite": ">=3.1.6"
-  },
-  "dependencies": {
-    "dot-prop": "^10.0.0",
-    "glob": "^11.0.3",
-    "js-yaml": "^4.1.0",
-    "marked": "^15.0.12",
-    "marked-terminal": "^7.3.0",
-    "ts-deepmerge": "^7.0.3"
-  },
-  "devDependencies": {
-    "@alienfast/eslint-config": "^6.0.6",
-    "@alienfast/prettier-config": "^1.0.2",
-    "@alienfast/tsconfig": "^1.0.4",
-    "@auto-it/all-contributors": "^11.3.0",
-    "@auto-it/first-time-contributor": "^11.3.0",
-    "@auto-it/released": "^11.3.0",
-    "@types/js-yaml": "^4.0.9",
-    "@types/node": "^24.4.0",
-    "@typescript-eslint/eslint-plugin": "^8.43.0",
-    "auto": "^11.3.0",
-    "eslint": "^9.35.0",
-    "execa": "^9.6.0",
-    "i18next": "^25.5.2",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.6.2",
-    "rimraf": "^6.0.1",
-    "rollup": "^4.50.2",
-    "tsup": "^8.5.0",
-    "tsx": "^4.20.5",
-    "typescript": "^5.9.2",
-    "typescript-eslint": "^8.43.0",
-    "vite": "^7.1.5",
-    "vitest": "^3.2.4"
-  },
   "author": "Kevin Ross <kevin.ross@alienfast.com>",
   "auto": {
     "canary": {
@@ -93,6 +11,89 @@
       "released"
     ]
   },
-  "packageManager": "yarn@4.5.3",
-  "prettier": "@alienfast/prettier-config"
+  "dependencies": {
+    "dot-prop": "^10.1.0",
+    "glob": "^13.0.6",
+    "js-yaml": "^4.2.0",
+    "marked": "^18.0.4",
+    "marked-terminal": "^7.3.0",
+    "ts-deepmerge": "^8.0.0"
+  },
+  "description": "Vite plugin loader for client embedded i18next locales composited from one to many json or yaml files.",
+  "devDependencies": {
+    "@alienfast/biome-config": "^1.0.5",
+    "@alienfast/tsconfig": "^1.0.8",
+    "@auto-it/all-contributors": "^11.3.6",
+    "@auto-it/first-time-contributor": "^11.3.6",
+    "@auto-it/released": "^11.3.6",
+    "@biomejs/biome": "^2.4.9",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.9.1",
+    "auto": "^11.3.6",
+    "execa": "^9.6.1",
+    "i18next": "^26.3.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.1.3",
+    "tsdown": "^0.22.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.8"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "homepage": "https://github.com/alienfast/vite-plugin-i18next-loader",
+  "keywords": [
+    "vite-plugin",
+    "loader",
+    "i18next",
+    "locales",
+    "yaml",
+    "json"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "main-note": "Though this is ESM only, the following main is to appease tsc and varieties of moduleResolution e.g. node vs nodenext, otherwise types aren't found. see https://github.com/rosskevin/ts-esm-workspaces/tree/bug-main-required-to-build#workaround ",
+  "maintainers": [
+    {
+      "email": "kevin.ross@alienfast.com",
+      "name": "Kevin Ross"
+    }
+  ],
+  "name": "vite-plugin-i18next-loader",
+  "packageManager": "pnpm@10.33.0",
+  "peerDependencies": {
+    "vite": ">=3.1.6"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "esbuild"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/alienfast/vite-plugin-i18next-loader",
+  "scripts": {
+    "build": "pnpm clean && tsdown",
+    "check": "run-p -c --aggregate-output check-types check-biome test",
+    "check-biome": "biome check --write",
+    "check-types": "tsc -b",
+    "clean": "tsx ./scripts/clean.ts",
+    "clean:pnpm": "tsx ./scripts/clean-pnpm.ts",
+    "release": "pnpm auto shipit",
+    "reset": "tsx ./scripts/reset.ts",
+    "test": "vitest"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "version": "3.1.3"
 }
