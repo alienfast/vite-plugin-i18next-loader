@@ -100,5 +100,5 @@ jobs:
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/build-cache
       - name: Create Release
-        run: pnpm auto shipit -vv
+        run: pnpm auto shipit
         if: ${{ env.GITHUB_TOKEN != '' }}
