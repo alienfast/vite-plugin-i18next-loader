@@ -1,15 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable unicorn/prefer-module */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as path from 'node:path'
 
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import factory from '../index.js'
 import { resolvedVirtualModuleId } from '../utils.js'
-import { esm, ThisScope } from './util.js'
+import { esm, type ThisScope } from './util.js'
 
 describe('namespaceResolverBasename', () => {
   for (const type of ['yaml', 'json']) {
@@ -32,7 +27,7 @@ describe('namespaceResolverBasename', () => {
       }
 
       it.concurrent('should generate the structure', async () => {
-        const load = factory({ paths: [appLocalesDir], namespaceResolution: 'basename' }).load
+        const load = factory({ namespaceResolution: 'basename', paths: [appLocalesDir] }).load
         const res = (load as any).call(thisScope, resolvedVirtualModuleId)
         const resStore = await import(esm(res))
         assertCommon(resStore)

@@ -2,13 +2,15 @@
 tsconfig.json
 tsconfig.tsbuildinfo
 /.*
-yarn.lock
+pnpm-lock.yaml
+biome.jsonc
 /node_modules
-tsup.config.ts
+tsdown.config.ts
 tsconfig.json
 
 ./dist/__tests__
 
-src
+# ship src (not tests) so the published .d.ts.map resolves to source
+src/__tests__
 CHANGELOG.md
 *.tgz

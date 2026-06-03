@@ -1,4 +1,4 @@
-import { Plugin } from 'vite'
+import type { Plugin } from 'vite'
 
 export interface ThisScope {
   addWatchFile: (id: string) => void
@@ -33,5 +33,5 @@ export type LoaderPlugin = WithRequired<Plugin, 'load'>
 // }
 
 export function esm(js: string) {
-  return 'data:text/javascript;base64,' + btoa(js)
+  return `data:text/javascript;base64,${btoa(js)}`
 }

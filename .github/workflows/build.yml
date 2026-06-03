@@ -6,6 +6,12 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+# Supersede in-progress runs for the same ref, but never cancel release
+# runs on main/next - only collapse redundant PR runs.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 # Enabled permissions on GITHUB_TOKEN
 permissions:
   # To be able to push to the repo
@@ -18,6 +24,8 @@ permissions:
   checks: write
   # To post comments on PRs
   issues: write
+  # OIDC token for npm Trusted Publishing (token-less publish + provenance)
+  id-token: write
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -30,32 +38,32 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/setup
 
   build:
     runs-on: ubuntu-latest
     needs: install
     steps:
-      - uses: actions/checkout@v4
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
+      - uses: actions/checkout@v6
+        with:
+          # full history + tags for auto's versioning
+          fetch-depth: 0
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/build-cache
-      - run: yarn build
-      # - run: yarn build && yarn lerna run bundle --scope=auto
+      - run: pnpm build
 
   # pr-check:
   #   runs-on: ubuntu-latest
   #   needs: build
   #   if: ${{ env.GITHUB_TOKEN != '' }}
   #   steps:
-  #     - uses: actions/checkout@v4
+  #     - uses: actions/checkout@v6
   #     - uses: ./.github/actions/setup
   #     - uses: ./.github/actions/build-cache
-  #     - uses: 8BitJonny/gh-get-current-pr@3.0.0
+  #     - uses: 8BitJonny/gh-get-current-pr@4.0.0
   #       id: PR
-  #     - run: yarn auto pr-check --pr $PR --url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+  #     - run: pnpm auto pr-check --pr $PR --url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
   #       env:
   #         PR: ${{ steps.PR.outputs.number }}
 
@@ -63,13 +71,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+        with:
+          # full history + tags for auto's versioning
+          fetch-depth: 0
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/build-cache
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
-      - run: yarn test
-      # - run: yarn test:coverage
+      - run: pnpm test
+      # - run: pnpm test:coverage
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       # - name: Send CodeCov Results
@@ -81,16 +90,17 @@ jobs:
     # if: ${{ env.GITHUB_TOKEN != '' && !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') }}
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
-      - uses: actions/checkout@v4
-      # - uses: 8BitJonny/gh-get-current-pr@3.0.0
+      - uses: actions/checkout@v6
+        with:
+          # full history + tags for auto's versioning
+          fetch-depth: 0
+      # - uses: 8BitJonny/gh-get-current-pr@4.0.0
       #   id: PR
       #   with:
       #     filterOutClosed: true
       #     sha: ${{ github.event.pull_request.head.sha }}
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/build-cache
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
       - name: Create Release
-        run: yarn auto shipit -vv
+        run: pnpm auto shipit
         if: ${{ env.GITHUB_TOKEN != '' }}
