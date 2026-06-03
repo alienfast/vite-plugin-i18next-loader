@@ -195,7 +195,9 @@ ${bundle}
     async handleHotUpdate({ file, server }) {
       const isLocaleFile =
         file.match(/\.(json|yml|yaml)$/) &&
-        options.paths.some((p) => file.startsWith(path.join(process.cwd(), p)))
+        options.paths.some((p) =>
+          file.startsWith(path.isAbsolute(p) ? p : path.join(process.cwd(), p)),
+        )
       if (isLocaleFile) {
         log.info(`Changed locale file: ${file}`, {
           timestamp: true,
