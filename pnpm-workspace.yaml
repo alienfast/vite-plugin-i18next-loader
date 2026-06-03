@@ -1,0 +1,9 @@
+# pnpm 11 reads settings here, not from the package.json "pnpm" field.
+# https://pnpm.io/settings
+allowBuilds:
+  '@biomejs/biome': true
+  esbuild: true
+# pnpm 11 enforces a default minimumReleaseAge (won't install <24h-old packages).
+# Trust our own org so freshly-published @alienfast releases don't block CI.
+minimumReleaseAgeExclude:
+  - '@alienfast/*'

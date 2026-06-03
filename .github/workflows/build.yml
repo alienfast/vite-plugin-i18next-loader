@@ -28,9 +28,9 @@ permissions:
   id-token: write
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN  }}
-  PROTECTED_BRANCH_REVIEWER_TOKEN: ${{ secrets.GH_TOKEN }}
+  # built-in token: auto creates GitHub releases/labels with it (no PAT to rotate).
+  # npm publish authenticates via OIDC trusted publishing; deps install from public npm.
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # PR: ${{ steps.PR.outputs.number }}
 
 jobs:
