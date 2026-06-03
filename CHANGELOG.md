@@ -1,3 +1,25 @@
+# v4.0.0 (Wed Jun 03 2026)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, kainstar ([@kainstar](https://github.com/kainstar)), for all your work!
+
+#### 💥 Breaking Change
+
+- Migrate tooling to pnpm, Biome, and tsdown [#34](https://github.com/alienfast/vite-plugin-i18next-loader/pull/34) ([@rosskevin](https://github.com/rosskevin))
+
+#### 🐛 Bug Fix
+
+- fix: respect absolute paths in handleHotUpdate [#33](https://github.com/alienfast/vite-plugin-i18next-loader/pull/33) ([@kainstar](https://github.com/kainstar))
+- fix: handle empty YAML locale files gracefully [#32](https://github.com/alienfast/vite-plugin-i18next-loader/pull/32) ([@kainstar](https://github.com/kainstar))
+
+#### Authors: 2
+
+- kainstar ([@kainstar](https://github.com/kainstar))
+- Kevin Ross ([@rosskevin](https://github.com/rosskevin))
+
+---
+
 # v3.1.3 (Mon Sep 15 2025)
 
 #### 🐛 Bug Fix
