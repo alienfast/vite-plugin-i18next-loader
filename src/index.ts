@@ -80,7 +80,7 @@ const factory = (options: Options) => {
   function loadLocales() {
     const localeDirs = resolvePaths(options.paths, process.cwd())
     assertExistence(localeDirs)
-    let allNamespaces = new Set()
+    const allNamespaces = new Set()
 
     //
     let appResBundle: ResBundle = {}
@@ -144,11 +144,11 @@ const factory = (options: Options) => {
 
     let langs = 'export const langs = [\n'
     for (const lang of allLangs) langs += `"${lang}",\n`
-    langs+=']\n'
+    langs += ']\n'
 
     let namespaces = 'export const namespaces = [\n'
     for (const ns of allNamespaces) namespaces += `"${ns}",\n`
-    namespaces+=']\n'
+    namespaces += ']\n'
 
     let defaultExport = 'const resources = { \n'
     for (const lang of allLangs) {
