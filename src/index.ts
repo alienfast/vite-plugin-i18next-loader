@@ -156,7 +156,6 @@ const factory = (options: Options) => {
     }
     defaultExport += '}'
     defaultExport += '\nexport default resources\n'
-    console.log('namedBundle', langs, namespaces,defaultExport)
 
     const bundle = namedBundle + langs + namespaces + defaultExport
 
