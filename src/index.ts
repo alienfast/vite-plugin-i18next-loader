@@ -121,8 +121,8 @@ const factory = (options: Options) => {
             const extname = path.extname(langFile)
             const namespaceParts = namespaceFilepath.replace(extname, '').split(path.sep)
             const namespace = [lang].concat(namespaceParts).join('.')
-            allNamespaces.add(namespaceParts.join('.'))
             setProperty(resBundle, namespace, content)
+            allNamespaces.add(namespaceParts.join('.'))
           } else {
             resBundle[lang] = content
           }
@@ -141,6 +141,12 @@ const factory = (options: Options) => {
         appResBundle[lang],
       )}\n`
     }
+    let defaultExport = 'const resources = { \n'
+    for (const lang of allLangs) {
+      defaultExport += `"${lang}": ${jsNormalizedLang(lang)},\n`
+    }
+    defaultExport += '}'
+    defaultExport += '\nexport default resources\n'
 
     let langs = 'export const langs = [\n'
     for (const lang of allLangs) langs += `"${lang}",\n`
@@ -149,13 +155,6 @@ const factory = (options: Options) => {
     let namespaces = 'export const namespaces = [\n'
     for (const ns of allNamespaces) namespaces += `"${ns}",\n`
     namespaces += ']\n'
-
-    let defaultExport = 'const resources = { \n'
-    for (const lang of allLangs) {
-      defaultExport += `"${lang}": ${jsNormalizedLang(lang)},\n`
-    }
-    defaultExport += '}'
-    defaultExport += '\nexport default resources\n'
 
     const bundle = namedBundle + langs + namespaces + defaultExport
 
