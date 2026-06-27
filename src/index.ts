@@ -210,12 +210,13 @@ ${bundle}
       for (const file of loadedFiles) {
         this.addWatchFile(file)
       }
-
       return bundle
     },
     name: 'vite-plugin-i18next-loader', // required, will show up in warnings and errors
     resolveId(id) {
-      if (id === virtualModuleId) return resolvedVirtualModuleId
+      if (id === virtualModuleId) {
+        return resolvedVirtualModuleId
+      }
       return null
     },
   }
