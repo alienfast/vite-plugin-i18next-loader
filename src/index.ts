@@ -80,6 +80,7 @@ const factory = (options: Options) => {
   function loadLocales() {
     const localeDirs = resolvePaths(options.paths, process.cwd())
     assertExistence(localeDirs)
+    let allNamespaces = new Set()
 
     //
     let appResBundle: ResBundle = {}
@@ -120,6 +121,7 @@ const factory = (options: Options) => {
             const extname = path.extname(langFile)
             const namespaceParts = namespaceFilepath.replace(extname, '').split(path.sep)
             const namespace = [lang].concat(namespaceParts).join('.')
+            allNamespaces.add(namespaceParts.join('.'))
             setProperty(resBundle, namespace, content)
           } else {
             resBundle[lang] = content
@@ -139,14 +141,24 @@ const factory = (options: Options) => {
         appResBundle[lang],
       )}\n`
     }
+
+    let langs = 'export const langs = [\n'
+    for (const lang of allLangs) langs += `"${lang}",\n`
+    langs+=']\n'
+
+    let namespaces = 'export const namespaces = [\n'
+    for (const ns of allNamespaces) namespaces += `"${ns}",\n`
+    namespaces+=']\n'
+
     let defaultExport = 'const resources = { \n'
     for (const lang of allLangs) {
       defaultExport += `"${lang}": ${jsNormalizedLang(lang)},\n`
     }
     defaultExport += '}'
     defaultExport += '\nexport default resources\n'
+    console.log('namedBundle', langs, namespaces,defaultExport)
 
-    const bundle = namedBundle + defaultExport
+    const bundle = namedBundle + langs + namespaces + defaultExport
 
     log.info(`Locales module '${resolvedVirtualModuleId}':`, {
       timestamp: true,
@@ -199,13 +211,12 @@ ${bundle}
       for (const file of loadedFiles) {
         this.addWatchFile(file)
       }
+
       return bundle
     },
     name: 'vite-plugin-i18next-loader', // required, will show up in warnings and errors
     resolveId(id) {
-      if (id === virtualModuleId) {
-        return resolvedVirtualModuleId
-      }
+      if (id === virtualModuleId) return resolvedVirtualModuleId
       return null
     },
   }
