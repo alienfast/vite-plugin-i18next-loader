@@ -58,9 +58,11 @@ export default defineConfig({
 ```typescript
 // File: app.ts
 import i18n from 'i18next'
-import resources from 'virtual:i18next-loader'
+import resources,{ langs, namespaces } from 'virtual:i18next-loader'
 
 i18n.init({
+  supportedLngs: langs,
+  ns: namespaces,
   resources,
 })
 
@@ -317,9 +319,11 @@ But it's just overwriting based on the return value of `glob-all`, so you should
 
 ## Output
 
-Note that the [virtual module](https://vitejs.dev/guide/api-plugin.html#virtual-modules-convention) generated has contents that conform to the [i18next resource format](https://www.i18next.com/misc/json-format).
+Note that the [virtual module](https://vitejs.dev/guide/api-plugin.html#virtual-modules-convention) generated has resources that conform to the [i18next resource format](https://www.i18next.com/misc/json-format).
 
 While using the output with `import resources from 'virtual:i18next-loader'` will not be tree-shaken, it is possible to use the named outputs with a dynamic `import` for tree shaking/chunking optimizations. If you take advantage of this, please see #4 and take a moment to update this doc with more information.
+
+Additionally, the named exports of `langs` and `namespaces` are available for use in your app. This is useful for setting the `supportedLngs` and `ns` options in your i18next initialization. Importing only them will not bundle `resources` due to vite tree-shaking.
 
 **NOTE** as shown by the test output below, due to ES syntactical rules, we cannot use hyphenated lang codes. I'm open to ideas, but in the interim, affected lang codes are exported with the hyphen converted to underscore e.g. `zh-cn` has a named export of `zh_cn`. I noted that vite allows for tree-shaking of JSON files, perhaps that is worth looking at to consider how it might help us and inform our output?
 
@@ -350,6 +354,8 @@ const resources = {
   en,
   'zh-cn': zh_cn,
 }
+export const langs = ['en', 'zh-cn']
+export const namespaces = ['foo', 'main']
 export default resources
 ```
 
