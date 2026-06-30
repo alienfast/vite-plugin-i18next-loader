@@ -24,6 +24,7 @@ describe('basic', () => {
         expect(resStore.de.main.test).toStrictEqual('Das ist ein Test!')
         expect(resStore.en.main.test).toStrictEqual('This is a test!')
         expect(resStore.fr.main.test).toStrictEqual('Ceci est un test!')
+
       }
 
       it.concurrent('should generate the structure', async () => {
@@ -31,6 +32,10 @@ describe('basic', () => {
         const res = (load as any).call(thisScope, resolvedVirtualModuleId) as string
         const resStore = await import(esm(res))
         assertCommon(resStore)
+
+        console.log(resStore)
+        expect(resStore.langs.toSorted()).toEqual(["de","dev","en","fr"])
+        expect(resStore.namespaces.toSorted()).toEqual([]) // no namespaces without namespaceResolution
       })
 
       it.concurrent('should process include', () => {
@@ -57,6 +62,11 @@ describe('basic', () => {
         const resStore = await import(esm(res))
         expect(resStore.de.main.foo).toStrictEqual(undefined)
         assertCommon(resStore)
+
+        console.log(resStore)
+        //check that langs and namespaces are populated
+        expect(resStore.langs.toSorted()).toEqual(["de","dev","en","fr"])
+        expect(resStore.namespaces.toSorted()).toEqual([]) // no namespaces without namespaceResolution
       })
     })
   }
