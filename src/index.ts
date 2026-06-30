@@ -122,7 +122,7 @@ const factory = (options: Options) => {
             const namespaceParts = namespaceFilepath.replace(extname, '').split(path.sep)
             const namespace = [lang].concat(namespaceParts).join('.')
             setProperty(resBundle, namespace, content)
-            allNamespaces.add(namespaceParts.join('.'))
+            allNamespaces.add(namespaceParts[0])
           } else {
             resBundle[lang] = content
           }
