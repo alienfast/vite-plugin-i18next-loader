@@ -122,12 +122,10 @@ const factory = (options: Options) => {
             const namespaceParts = namespaceFilepath.replace(extname, '').split(path.sep)
             const namespace = [lang].concat(namespaceParts).join('.')
             setProperty(resBundle, namespace, content)
-            allNamespaces.add(namespaceParts[0])
           } else {
             resBundle[lang] = content
-            console.log(Object.keys(content))
-            for (const ns of Object.keys(content)) allNamespaces.add(ns)
           }
+          for (const ns of Object.keys(resBundle[lang])) allNamespaces.add(ns)
           appResBundle = merge(appResBundle, resBundle)
         }
       }
