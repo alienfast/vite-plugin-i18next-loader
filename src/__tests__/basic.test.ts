@@ -26,7 +26,7 @@ describe('basic', () => {
         expect(resStore.fr.main.test).toStrictEqual('Ceci est un test!')
         //check that langs and namespaces are populated
         expect(resStore.langs.toSorted()).toEqual(["de","dev","en","fr"])
-        expect(resStore.namespaces.toSorted()).toEqual([]) // no namespaces without namespaceResolution
+        expect(resStore.namespaces.toSorted()).toEqual(["main"])
       }
 
       it.concurrent('should generate the structure', async () => {

@@ -125,6 +125,8 @@ const factory = (options: Options) => {
             allNamespaces.add(namespaceParts[0])
           } else {
             resBundle[lang] = content
+            console.log(Object.keys(content))
+            for (const ns of Object.keys(content)) allNamespaces.add(ns)
           }
           appResBundle = merge(appResBundle, resBundle)
         }
