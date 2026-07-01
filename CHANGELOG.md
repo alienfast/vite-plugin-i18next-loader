@@ -1,3 +1,15 @@
+# v4.1.0 (Wed Jul 01 2026)
+
+#### 🚀 Enhancement
+
+- Adding langs and namespaces exports [#36](https://github.com/alienfast/vite-plugin-i18next-loader/pull/36) ([@YPetremann](https://github.com/YPetremann))
+
+#### Authors: 1
+
+- Y.Petremann ([@YPetremann](https://github.com/YPetremann))
+
+---
+
 # v4.0.1 (Wed Jun 03 2026)
 
 #### 🐛 Bug Fix
