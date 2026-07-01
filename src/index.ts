@@ -80,6 +80,7 @@ const factory = (options: Options) => {
   function loadLocales() {
     const localeDirs = resolvePaths(options.paths, process.cwd())
     assertExistence(localeDirs)
+    const allNamespaces = new Set()
 
     //
     let appResBundle: ResBundle = {}
@@ -124,6 +125,7 @@ const factory = (options: Options) => {
           } else {
             resBundle[lang] = content
           }
+          for (const ns of Object.keys(resBundle[lang])) allNamespaces.add(ns)
           appResBundle = merge(appResBundle, resBundle)
         }
       }
@@ -146,7 +148,15 @@ const factory = (options: Options) => {
     defaultExport += '}'
     defaultExport += '\nexport default resources\n'
 
-    const bundle = namedBundle + defaultExport
+    let langs = 'export const langs = [\n'
+    for (const lang of allLangs) langs += `"${lang}",\n`
+    langs += ']\n'
+
+    let namespaces = 'export const namespaces = [\n'
+    for (const ns of allNamespaces) namespaces += `"${ns}",\n`
+    namespaces += ']\n'
+
+    const bundle = namedBundle + langs + namespaces + defaultExport
 
     log.info(`Locales module '${resolvedVirtualModuleId}':`, {
       timestamp: true,
